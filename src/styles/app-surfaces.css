@@ -1,0 +1,155 @@
+/**
+ * Theme-aware surfaces for list / create / edit / view / dashboard pages.
+ * Uses --kz-* tokens from themes.css (switches with html[data-theme]).
+ */
+
+:root,
+[data-theme="light"],
+[data-theme="green"] {
+  --kz-tint-03: rgba(var(--kz-primary-rgb), 0.03);
+  --kz-tint-05: rgba(var(--kz-primary-rgb), 0.05);
+  --kz-tint-06: rgba(var(--kz-primary-rgb), 0.06);
+  --kz-tint-07: rgba(var(--kz-primary-rgb), 0.07);
+  --kz-tint-08: rgba(var(--kz-primary-rgb), 0.08);
+  --kz-tint-10: rgba(var(--kz-primary-rgb), 0.1);
+  --kz-tint-12: rgba(var(--kz-primary-rgb), 0.12);
+  --kz-tint-14: rgba(var(--kz-primary-rgb), 0.14);
+  --kz-tint-15: rgba(var(--kz-primary-rgb), 0.15);
+  --kz-tint-18: rgba(var(--kz-primary-rgb), 0.18);
+  --kz-tint-22: rgba(var(--kz-primary-rgb), 0.22);
+  --kz-tint-28: rgba(var(--kz-primary-rgb), 0.28);
+  --kz-tint-38: rgba(var(--kz-primary-rgb), 0.38);
+  --kz-tint-45: rgba(var(--kz-primary-rgb), 0.45);
+  --kz-page-title: var(--kz-primary-hover);
+  --kz-form-header-bg: linear-gradient(180deg, var(--kz-tint-07) 0%, rgba(255, 255, 255, 0) 100%);
+  --kz-card-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] {
+  --kz-tint-03: rgba(255, 255, 255, 0.03);
+  --kz-tint-05: rgba(255, 255, 255, 0.05);
+  --kz-tint-06: rgba(255, 255, 255, 0.06);
+  --kz-tint-07: rgba(255, 255, 255, 0.07);
+  --kz-tint-08: rgba(255, 255, 255, 0.08);
+  --kz-tint-10: rgba(255, 255, 255, 0.1);
+  --kz-tint-12: rgba(255, 255, 255, 0.12);
+  --kz-tint-14: rgba(255, 255, 255, 0.14);
+  --kz-tint-15: rgba(215, 255, 49, 0.12);
+  --kz-tint-18: rgba(215, 255, 49, 0.18);
+  --kz-tint-22: rgba(215, 255, 49, 0.22);
+  --kz-tint-28: rgba(215, 255, 49, 0.28);
+  --kz-tint-38: rgba(215, 255, 49, 0.38);
+  --kz-tint-45: rgba(215, 255, 49, 0.45);
+  --kz-page-title: #ffffff;
+  --kz-form-header-bg: var(--kz-modal-header-bg);
+}
+
+[data-theme="dark"] .kz-modal-backdrop {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 17, 23, 0.85) 0%,
+    rgba(22, 26, 35, 0.9) 50%,
+    rgba(15, 17, 23, 0.88) 100%
+  );
+}
+
+[data-theme="dark"] .kz-modal-header {
+  background: var(--kz-modal-header-bg);
+  color: #ffffff;
+  border-bottom: 1px solid var(--kz-border-subtle);
+}
+
+/* Shared page shell + cards */
+.kz-page-shell {
+  background-color: var(--kz-bg) !important;
+}
+
+.kz-card {
+  border-radius: 0.75rem;
+  background: var(--kz-surface);
+  border: 1px solid var(--kz-border);
+  box-shadow: var(--kz-card-shadow);
+}
+
+.kz-page-title {
+  color: var(--kz-page-title);
+}
+
+.kz-text-primary {
+  color: var(--kz-primary);
+}
+
+.kz-text-muted {
+  color: var(--kz-text-secondary);
+}
+
+/* Admin empty / list rows */
+.admin-empty-state-icon {
+  color: var(--kz-primary);
+  background: var(--kz-tint-10);
+}
+
+.admin-list-row:hover {
+  background: var(--kz-hover-bg);
+}
+
+/* React Data Table (modernTableStyles companion) */
+.kz-rdt-head {
+  background-color: var(--kz-table-header-bg) !important;
+  border-bottom: 1px solid var(--kz-border) !important;
+}
+
+.kz-rdt-head .rdt_TableCol,
+.kz-rdt-head [role="columnheader"] {
+  color: var(--kz-table-header-text) !important;
+}
+
+.kz-rdt-row {
+  background-color: var(--kz-table-row-bg, var(--kz-surface)) !important;
+  color: var(--kz-table-cell-text, var(--kz-text-primary));
+}
+
+.kz-rdt-row:hover {
+  background-color: var(--kz-table-row-hover-bg, var(--kz-hover-bg)) !important;
+}
+
+.kz-rdt-row .rdt_TableCell {
+  color: var(--kz-table-cell-text, var(--kz-text-primary));
+}
+
+.kz-rdt-pagination {
+  border-top-color: var(--kz-border) !important;
+  color: var(--kz-text-secondary) !important;
+}
+
+/* Modals */
+.kz-modal-backdrop {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.65) 0%,
+    rgba(var(--kz-accent-rgb), 0.12) 50%,
+    rgba(var(--kz-primary-rgb), 0.08) 100%
+  );
+}
+
+.kz-modal-panel {
+  background: var(--kz-modal-bg, var(--kz-surface));
+  border-color: var(--kz-border);
+}
+
+.kz-modal-header {
+  border-bottom-color: var(--kz-border);
+  background: var(--kz-modal-header-bg, linear-gradient(90deg, var(--kz-tint-05) 0%, var(--kz-tint-03) 100%));
+  color: var(--kz-text-primary);
+}
+
+[data-theme="green"] .kz-modal-header {
+  background: linear-gradient(90deg, var(--kz-tint-08) 0%, rgba(215, 255, 49, 0.08) 100%);
+}
+
+/* Default status/priority chip fallback */
+.kz-chip-default {
+  background: var(--kz-active-bg);
+  color: var(--kz-primary);
+  border-color: var(--kz-tint-15);
+}

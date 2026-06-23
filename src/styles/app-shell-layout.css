@@ -1,0 +1,52 @@
+/**
+ * Application shell — full-height sidebar left column, header + content right column.
+ */
+
+:root {
+  --sidebar-width: 220px;
+}
+
+/* Right column: page header + scrollable main */
+.app-shell-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Header lives in content column only — sticky, not full-viewport fixed */
+.app-shell-main > .enterprise-top-nav.enterprise-top-nav--v2 {
+  position: sticky;
+  top: 0;
+  left: auto;
+  right: auto;
+  width: 100%;
+  z-index: 1050;
+  flex-shrink: 0;
+}
+
+.app-shell-main > .app-main-content {
+  flex: 1;
+  min-height: 0;
+  height: auto;
+  width: 100%;
+  margin-left: 0;
+}
+
+/* Desktop: sidebar owns full left column from top */
+@media (min-width: 768px) {
+  .enterprise-sidebar.enterprise-sidebar--redesign {
+    top: 0 !important;
+    height: 100vh !important;
+  }
+}
+
+/* Mobile: drawer sits below full-width header */
+@media (max-width: 767px) {
+  .enterprise-sidebar.enterprise-sidebar--redesign {
+    top: var(--app-top-nav-height, 60px) !important;
+    height: auto !important;
+  }
+}

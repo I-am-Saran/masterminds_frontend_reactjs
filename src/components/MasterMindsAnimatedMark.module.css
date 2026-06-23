@@ -1,0 +1,401 @@
+/* Shared Master Minds animated icon — loader + login */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  transform: translateZ(0);
+}
+
+.glowAura {
+  position: absolute;
+  inset: -18% -12%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(215, 255, 49, 0.42) 0%,
+    rgba(215, 255, 49, 0.14) 48%,
+    transparent 72%
+  );
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+.iconSvg {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.track {
+  fill: none;
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.fill {
+  stroke: none;
+  opacity: 0;
+  will-change: opacity;
+}
+
+.draw {
+  fill: none;
+  stroke: #d7ff31;
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  will-change: stroke-dashoffset, opacity;
+}
+
+.pulse {
+  fill: none;
+  stroke: #d7ff31;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 0.1 0.9;
+  stroke-dashoffset: 1;
+  opacity: 0;
+  filter: drop-shadow(0 0 5px rgba(215, 255, 49, 0.75));
+  will-change: stroke-dashoffset, opacity;
+}
+
+/* ── Login (auth panel) — draw once, then continuous pulse ── */
+.modeLogin .stage {
+  width: 108px;
+  margin: 0 auto;
+}
+
+.modeLogin .track {
+  stroke: rgba(44, 44, 44, 0.14);
+}
+
+.modeLogin .fill {
+  fill: rgba(215, 255, 49, 0.92);
+  animation: mmLoginFillIn 0.5s ease 1.85s forwards;
+}
+
+.modeLogin .draw {
+  animation:
+    mmLoginDraw 1.9s cubic-bezier(0.45, 0.05, 0.2, 1) forwards,
+    mmLoginDrawFade 0.35s ease 1.9s forwards;
+}
+
+.modeLogin .pulse {
+  animation: mmPulseTravel 2.6s linear 2.1s infinite;
+}
+
+.modeLogin .glowAura {
+  animation: mmLoginGlow 4.5s ease-in-out 2.2s infinite;
+}
+
+.wordmark {
+  margin-top: 0.55rem;
+  font-family: "DM Sans", Inter, system-ui, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.wordmarkMaster {
+  color: #d7ff31;
+}
+
+.wordmarkMinds {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(117, 117, 117, 0.85);
+}
+
+.sizeSm .stage {
+  width: 72px;
+}
+
+.sizeLg .stage {
+  width: 128px;
+}
+
+/* ── Page (in-app loaders) — login pulse style, instant start ── */
+.modePage .stage {
+  width: 108px;
+  margin: 0 auto;
+}
+
+.modePage .track {
+  stroke: rgba(44, 44, 44, 0.14);
+}
+
+.modePage .fill {
+  fill: rgba(215, 255, 49, 0.92);
+  opacity: 1;
+}
+
+.modePage .draw {
+  opacity: 0;
+}
+
+.modePage .pulse {
+  animation: mmPulseTravel 2.6s linear infinite;
+}
+
+.modePage .glowAura {
+  animation: mmLoginGlow 4.5s ease-in-out infinite;
+}
+
+/* ── Loader (full screen) — looping storyboard sequence ── */
+.modeLoader .stage {
+  width: min(148px, 38vw);
+  margin: 0 auto 1.25rem;
+}
+
+.modeLoader .track {
+  stroke: rgba(255, 255, 255, 0.16);
+}
+
+.modeLoader .fill {
+  fill: #d7ff31;
+  animation: mmLoaderFillLoop 6s ease-in-out infinite;
+}
+
+.modeLoader .draw {
+  filter: drop-shadow(0 0 6px rgba(215, 255, 49, 0.55));
+  animation: mmLoaderDrawLoop 6s cubic-bezier(0.45, 0.05, 0.2, 1) infinite;
+}
+
+.modeLoader .pulse {
+  animation: mmLoaderPulseLoop 6s linear infinite;
+}
+
+.modeLoader .glowAura {
+  animation: mmLoaderGlowLoop 6s ease-in-out infinite;
+}
+
+.loaderTitle {
+  margin: 0 0 1.75rem;
+  font-family: "DM Sans", Inter, system-ui, sans-serif;
+  font-size: clamp(1.125rem, 2.8vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  opacity: 0;
+  transform: translate3d(0, 10px, 0);
+  animation: mmLoaderTitleLoop 6s ease-in-out infinite;
+}
+
+.loaderTitleMaster {
+  color: #d7ff31;
+}
+
+.loaderTitleMinds {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.55);
+}
+
+@keyframes mmLoginDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes mmLoginDrawFade {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes mmLoginFillIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mmLoginGlow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.62;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes mmPulseTravel {
+  0% {
+    stroke-dashoffset: 1;
+    opacity: 0;
+  }
+  6% {
+    opacity: 0.95;
+  }
+  94% {
+    stroke-dashoffset: 0;
+    opacity: 0.95;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes mmLoaderDrawLoop {
+  0% {
+    stroke-dashoffset: 1;
+    opacity: 1;
+  }
+  32% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  38% {
+    stroke-dashoffset: 0;
+    opacity: 0.35;
+  }
+  88% {
+    stroke-dashoffset: 0;
+    opacity: 0.2;
+  }
+  92% {
+    stroke-dashoffset: 1;
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: 1;
+    opacity: 1;
+  }
+}
+
+@keyframes mmLoaderFillLoop {
+  0%,
+  30% {
+    opacity: 0;
+  }
+  36%,
+  86% {
+    opacity: 1;
+  }
+  92%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes mmLoaderPulseLoop {
+  0%,
+  34% {
+    stroke-dashoffset: 1;
+    opacity: 0;
+  }
+  38% {
+    opacity: 0.9;
+  }
+  84% {
+    stroke-dashoffset: 0;
+    opacity: 0.9;
+  }
+  90%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes mmLoaderGlowLoop {
+  0%,
+  34% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  42% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  52% {
+    opacity: 0.85;
+    transform: scale(1.08);
+  }
+  62% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+  72% {
+    opacity: 0.55;
+    transform: scale(1.02);
+  }
+  86%,
+  100% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes mmLoaderTitleLoop {
+  0%,
+  34% {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+  40%,
+  86% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  92%,
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .draw,
+  .fill,
+  .pulse,
+  .glowAura,
+  .loaderTitle {
+    animation: none !important;
+  }
+
+  .modeLogin .fill,
+  .modePage .fill,
+  .modeLoader .fill {
+    opacity: 1;
+  }
+
+  .modeLogin .draw,
+  .modePage .draw,
+  .modeLoader .draw {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+
+  .modeLoader .loaderTitle {
+    opacity: 1;
+    transform: none;
+  }
+
+  .modeLoader .glowAura,
+  .modeLogin .glowAura,
+  .modePage .glowAura {
+    opacity: 0.4;
+    transform: none;
+  }
+}

@@ -1,0 +1,371 @@
+/**
+ * Master Minds — 2026 SaaS micro-interactions
+ * Subtle, enterprise-friendly motion. Respects prefers-reduced-motion.
+ */
+
+:root {
+  --kz-motion-fast: 200ms;
+  --kz-motion-page: 280ms;
+  --kz-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --kz-ease-spring: cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+
+/* ── Page transitions ── */
+@keyframes kz-page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.kz-module-page,
+.kz-page-shell {
+  animation: kz-page-enter var(--kz-motion-page) var(--kz-ease-out) both;
+}
+
+/* Stagger children on module pages — never animate modals (breaks position:fixed) */
+.kz-module-page__inner > *:not(.kz-modal-overlay):not(.kz-modal-backdrop) {
+  animation: kz-page-enter var(--kz-motion-page) var(--kz-ease-out) both;
+}
+
+.kz-module-page__inner > *:not(.kz-modal-overlay):not(.kz-modal-backdrop):nth-child(1) { animation-delay: 0ms; }
+.kz-module-page__inner > *:not(.kz-modal-overlay):not(.kz-modal-backdrop):nth-child(2) { animation-delay: 40ms; }
+.kz-module-page__inner > *:not(.kz-modal-overlay):not(.kz-modal-backdrop):nth-child(3) { animation-delay: 80ms; }
+.kz-module-page__inner > *:not(.kz-modal-overlay):not(.kz-modal-backdrop):nth-child(4) { animation-delay: 120ms; }
+.kz-module-page__inner > *:not(.kz-modal-overlay):not(.kz-modal-backdrop):nth-child(5) { animation-delay: 160ms; }
+
+/* ── Cards ── */
+.kz-card,
+.kz-panel-card,
+.kz-metric-stat,
+.kz-quick-action,
+.kz-greeting-card {
+  transition:
+    transform var(--kz-motion-fast) var(--kz-ease-out),
+    box-shadow var(--kz-motion-fast) var(--kz-ease-out),
+    border-color var(--kz-motion-fast) ease;
+  will-change: transform;
+}
+
+.kz-card:hover,
+.kz-panel-card:hover,
+.kz-metric-stat--clickable:hover,
+.kz-quick-action:hover,
+.kz-greeting-card:hover {
+  transform: translateY(-3px);
+}
+
+/* ── Buttons ── */
+.kz-btn-primary,
+.kz-btn-secondary,
+.kz-btn-danger,
+.kz-toolbar-btn,
+.enterprise-icon-btn {
+  transition:
+    transform var(--kz-motion-fast) var(--kz-ease-out),
+    box-shadow var(--kz-motion-fast) var(--kz-ease-out),
+    background var(--kz-motion-fast) ease,
+    border-color var(--kz-motion-fast) ease;
+}
+
+.kz-btn-primary:active:not(:disabled),
+.kz-btn-secondary:active:not(:disabled),
+.kz-btn-danger:active:not(:disabled),
+.kz-toolbar-btn:active:not(:disabled),
+.enterprise-icon-btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ── Sidebar navigation ── */
+.kz-nav-item--active .kz-nav-icon,
+.kz-nav-group-active .kz-nav-icon {
+  transform: scale(1.05);
+}
+
+/* ── KPI metrics ── */
+@keyframes kz-kpi-icon-enter {
+  from {
+    opacity: 0.6;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.kz-metric-stat__icon {
+  animation: kz-kpi-icon-enter 450ms var(--kz-ease-out) both;
+}
+
+.kz-metric-stat__value {
+  transition: opacity var(--kz-motion-fast) ease;
+}
+
+.kz-metric-stat__trend-dot {
+  animation: kz-pulse-dot 2.4s ease-in-out infinite;
+}
+
+@keyframes kz-pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.85); }
+}
+
+/* ── Tables ── */
+.kaizen-tickets-table-wrap .rdt_TableRow,
+.kz-rdt-row,
+.kz-workload-board__row--clickable,
+.kz-workload-table tbody tr,
+.kz-users-table-wrap .rdt_TableRow,
+.kz-roles-table-wrap .rdt_TableRow,
+table tbody tr {
+  transition: background var(--kz-motion-fast) ease;
+}
+
+.kaizen-tickets-table-wrap .rdt_TableRow:hover,
+.kz-rdt-row:hover,
+.kz-workload-board__row--clickable:hover,
+.kz-workload-table tbody tr:hover,
+table tbody tr:hover {
+  background: var(--kz-row-hover-bg) !important;
+}
+
+/* ── Skeleton shimmer ── */
+@keyframes kz-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.kz-skeleton {
+  display: block;
+  border-radius: 8px;
+  background: linear-gradient(
+    90deg,
+    #E2E8F0 0%,
+    #F1F5F9 40%,
+    #E2E8F0 80%
+  );
+  background-size: 200% 100%;
+  animation: kz-shimmer 1.4s ease-in-out infinite;
+}
+
+.kz-skeleton-kpi,
+.kz-skeleton-widget,
+.kz-skeleton-table {
+  border: 1px solid var(--kz-border);
+  border-radius: var(--kz-radius-card, 16px);
+  background: var(--kz-surface);
+  box-shadow: var(--kz-card-shadow);
+  padding: 18px 20px;
+}
+
+.kz-skeleton-kpi__icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.kz-skeleton-table__head,
+.kz-skeleton-table__row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.kz-skeleton-table__head {
+  border-bottom: 1px solid var(--kz-border);
+  margin-bottom: 4px;
+}
+
+.kz-skeleton-table__row + .kz-skeleton-table__row {
+  border-top: 1px solid var(--kz-border);
+}
+
+.kz-skeleton-page {
+  animation: kz-page-enter var(--kz-motion-page) var(--kz-ease-out) both;
+}
+
+.kz-skeleton-inline {
+  padding: 1rem;
+}
+
+/* ── Empty states ── */
+@keyframes kz-empty-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.kz-empty-state,
+.kz-widget-empty {
+  animation: kz-empty-fade-in var(--kz-motion-page) var(--kz-ease-out) both;
+}
+
+.kz-empty-state-icon,
+.kz-widget-empty__icon {
+  transition: transform var(--kz-motion-fast) var(--kz-ease-out);
+}
+
+.kz-empty-state:hover .kz-empty-state-icon,
+.kz-widget-empty:hover .kz-widget-empty__icon {
+  transform: scale(1.04);
+}
+
+/* ── Modals & dropdowns ── */
+:root {
+  --kz-modal-backdrop-duration: 220ms;
+  --kz-modal-enter-duration: 320ms;
+  --kz-modal-exit-duration: 220ms;
+  --kz-modal-ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes kz-modal-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes kz-modal-backdrop-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes kz-modal-panel-in {
+  from {
+    opacity: 0;
+    transform: translate3d(-28px, 0, 0) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes kz-modal-panel-out {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(-20px, 0, 0) scale(0.98);
+  }
+}
+
+.kz-modal-backdrop--enter {
+  animation: kz-modal-backdrop-in var(--kz-modal-backdrop-duration) ease both;
+}
+
+.kz-modal-backdrop--exit {
+  animation: kz-modal-backdrop-out var(--kz-modal-backdrop-duration) ease both;
+}
+
+.kz-modal-panel--enter {
+  animation: kz-modal-panel-in var(--kz-modal-enter-duration) var(--kz-modal-ease-premium) both;
+}
+
+.kz-modal-panel--exit {
+  animation: kz-modal-panel-out var(--kz-modal-exit-duration) var(--kz-modal-ease-premium) both;
+}
+
+.kz-modal-overlay,
+.kz-modal-backdrop {
+  transform: translateZ(0);
+  will-change: opacity;
+}
+
+.kz-modal-overlay .kz-modal-panel,
+.kz-modal-backdrop .kz-modal-panel {
+  transform-origin: center center;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+/* Prevent page/card hover transforms from affecting open modals */
+.kz-modal-overlay,
+.kz-modal-backdrop,
+.kz-modal-overlay .kz-modal-panel,
+.kz-modal-backdrop .kz-modal-panel {
+  pointer-events: auto;
+}
+
+.kz-modal-overlay:hover,
+.kz-modal-backdrop:hover {
+  transform: none;
+}
+
+@keyframes kz-dropdown-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.kz-dropdown-panel {
+  transform-origin: top center;
+  animation: kz-dropdown-in var(--kz-motion-fast) var(--kz-ease-out) both;
+}
+
+.kz-dropdown-item {
+  transition: background var(--kz-motion-fast) ease;
+}
+
+.kz-dropdown-item:hover,
+.kz-dropdown-item:focus-visible {
+  background: var(--kz-hover-bg);
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .kz-module-page,
+  .kz-page-shell,
+  .kz-module-page__inner > *:not(.kz-modal-overlay):not(.kz-modal-backdrop),
+  .kz-skeleton-page,
+  .kz-empty-state,
+  .kz-widget-empty,
+  .kz-modal-overlay,
+  .kz-modal-backdrop,
+  .kz-modal-overlay .kz-modal-panel,
+  .kz-modal-backdrop .kz-modal-panel {
+    animation: none;
+  }
+
+  .kz-card:hover,
+  .kz-panel-card:hover,
+  .kz-metric-stat--clickable:hover,
+  .kz-quick-action:hover,
+  .kz-greeting-card:hover,
+  .kz-nav-item:hover:not(.kz-nav-item--active),
+  .kz-btn-primary:hover:not(:disabled),
+  .kz-btn-secondary:hover:not(:disabled),
+  .enterprise-icon-btn:hover {
+    transform: none;
+  }
+
+  .kz-skeleton {
+    animation: none;
+    background: #E2E8F0;
+  }
+}

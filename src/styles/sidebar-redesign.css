@@ -1,0 +1,334 @@
+/**
+ * Sidebar visual system — balanced hierarchy (Linear / Jira / ClickUp).
+ * Scoped to .enterprise-sidebar--redesign only.
+ * Do not override dashboard, KPI, charts, or top bar.
+ */
+
+.enterprise-sidebar.enterprise-sidebar--redesign {
+  --sb-pad-x: 12px;
+  --sb-item-h: 46px;
+  --sb-item-gap: 5px;
+  --sb-icon-size: 46px;
+  --sb-brand-inner-gap: 2px;
+  --sb-brand-pad-bottom: 18px;
+  --sb-brand-nav-gap: 18px;
+  --sb-brand-divider-color: #e5e7eb;
+}
+
+.enterprise-sidebar.enterprise-sidebar--redesign .enterprise-sidebar__inner {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.enterprise-sidebar--redesign .enterprise-sidebar-surface {
+  background: var(--kz-sidebar-bg, #ffffff);
+  border-right: 1px solid var(--kz-sidebar-border, rgba(15, 23, 42, 0.08));
+  box-shadow: none;
+}
+
+[data-theme="dark"] .enterprise-sidebar--redesign .enterprise-sidebar-surface {
+  background: linear-gradient(180deg, var(--kz-sidebar-bg) 0%, var(--kz-sidebar-bg-end) 100%);
+  border-right: 1px solid var(--kz-sidebar-border);
+}
+
+/* ── Brand: logo block + inset structural divider ── */
+.enterprise-sidebar--redesign .enterprise-sidebar__brand {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.enterprise-sidebar--redesign .enterprise-sidebar__brand-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sb-brand-inner-gap);
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 10px var(--sb-pad-x) var(--sb-brand-pad-bottom);
+  line-height: 1.2;
+  text-decoration: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none;
+  transition: opacity 160ms ease;
+}
+
+.enterprise-sidebar--redesign .enterprise-sidebar__brand-link:hover,
+.enterprise-sidebar--redesign .enterprise-sidebar__brand-link:focus,
+.enterprise-sidebar--redesign .enterprise-sidebar__brand-link:focus-visible,
+.enterprise-sidebar--redesign .enterprise-sidebar__brand-link.active,
+.enterprise-sidebar--redesign .enterprise-sidebar__brand-link[aria-current="page"] {
+  text-decoration: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none;
+}
+
+.enterprise-sidebar--redesign .enterprise-sidebar__brand-link:hover {
+  opacity: 0.88;
+}
+
+.enterprise-sidebar--redesign .enterprise-sidebar__logo {
+  display: block;
+  width: var(--sb-icon-size);
+  height: var(--sb-icon-size);
+  max-width: var(--sb-icon-size);
+  max-height: var(--sb-icon-size);
+  margin: 0 auto;
+  flex-shrink: 0;
+  object-fit: contain;
+  object-position: center center;
+}
+
+.enterprise-sidebar--redesign .enterprise-sidebar__brand-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--kz-nav-item-text, #64748b);
+  letter-spacing: normal;
+  line-height: 1.15;
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+  text-decoration: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.enterprise-sidebar--redesign .enterprise-sidebar__brand::after {
+  content: "";
+  display: block;
+  flex-shrink: 0;
+  height: 0;
+  margin: 0 var(--sb-pad-x);
+  border: none;
+  border-bottom: 1px solid var(--kz-sidebar-border, var(--sb-brand-divider-color));
+}
+
+[data-theme="dark"] .enterprise-sidebar--redesign .enterprise-sidebar__brand::after {
+  border-bottom-color: var(--kz-sidebar-border);
+}
+
+[data-theme="dark"] .enterprise-sidebar--redesign .enterprise-sidebar__brand-name {
+  color: var(--kz-nav-item-text, #94a3b8);
+}
+
+/* ── Nav: generous space after branding divider ── */
+.enterprise-sidebar--redesign .enterprise-nav-scroll {
+  flex: 1;
+  min-height: 0;
+  padding: var(--sb-brand-nav-gap) var(--sb-pad-x) 12px;
+}
+
+.enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-stack {
+  gap: var(--sb-item-gap) !important;
+  padding: 0 !important;
+}
+
+.enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sb-item-gap) !important;
+}
+
+.enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sb-item-gap);
+}
+
+/* No stacked margins — rhythm comes from gap only */
+.enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-item:not(.kz-nav-item--child) + .kz-nav-group,
+.enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-group + .kz-nav-group {
+  margin-top: 0;
+}
+
+/* Adjacent groups — same rhythm as other items, no extra divider */
+.enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-group + .kz-nav-group {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+/* ── Top-level items: 44–48px ── */
+.enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-item:not(.kz-nav-item--child),
+.enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-group-toggle:not(.kz-nav-group-toggle--nested) {
+  min-height: var(--sb-item-h) !important;
+  height: var(--sb-item-h) !important;
+  padding: 0 var(--sb-pad-x) !important;
+  gap: 8px;
+  border-radius: 12px !important;
+  border: none !important;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--kz-nav-item-text, #64748b);
+  transition: background 140ms ease, color 140ms ease;
+}
+
+.enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-item--child,
+.enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-group-toggle--nested {
+  min-height: 36px !important;
+  height: 36px !important;
+  padding: 0 8px 0 var(--sb-pad-x) !important;
+  font-size: 0.75rem;
+  border-radius: 10px;
+  gap: 6px;
+}
+
+/* Hover */
+.enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-item:hover:not(.kz-nav-item--active),
+.enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-group-toggle:hover:not(.kz-nav-group-active) {
+  background: rgba(15, 23, 42, 0.04) !important;
+  color: var(--kz-text-primary, #334155) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+[data-theme="dark"] .enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-item:hover:not(.kz-nav-item--active),
+[data-theme="dark"] .enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-group-toggle:hover:not(.kz-nav-group-active) {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #e2e8f0 !important;
+}
+
+/* Active */
+.enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-item--active,
+.enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-group-active {
+  background: rgba(215, 255, 49, 0.18) !important;
+  color: #0f172a !important;
+  font-weight: 600;
+  border: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+[data-theme="dark"] .enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-item--active,
+[data-theme="dark"] .enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-group-active {
+  background: rgba(215, 255, 49, 0.14) !important;
+  color: #f8fafc !important;
+}
+
+.enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-item--active::before,
+.enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-group-active::before {
+  display: none;
+}
+
+/* Icons */
+.enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-icon-badge {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 8px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  flex-shrink: 0;
+}
+
+.enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-item--active .kz-nav-icon-badge,
+.enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-group-active .kz-nav-icon-badge {
+  background: rgba(215, 255, 49, 0.2) !important;
+}
+
+.enterprise-sidebar--redesign .kz-nav-icon {
+  color: var(--kz-nav-item-icon, #64748b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.enterprise-sidebar--redesign .kz-nav-item--active .kz-nav-icon,
+.enterprise-sidebar--redesign .kz-nav-group-active .kz-nav-icon {
+  color: #3f4f0f !important;
+}
+
+[data-theme="dark"] .enterprise-sidebar--redesign .kz-nav-item--active .kz-nav-icon,
+[data-theme="dark"] .enterprise-sidebar--redesign .kz-nav-group-active .kz-nav-icon {
+  color: #d7ff31 !important;
+}
+
+.enterprise-sidebar--redesign .kz-nav-item__label {
+  line-height: 1.2;
+  min-width: 0;
+}
+
+.enterprise-sidebar--redesign .kz-nav-item--child .kz-nav-item__label,
+.enterprise-sidebar--redesign .kz-nav-group-toggle--nested .kz-nav-item__label {
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.enterprise-sidebar--redesign .kz-nav-chevron {
+  opacity: 0.4;
+  flex-shrink: 0;
+}
+
+.enterprise-sidebar--redesign .kz-nav-group-toggle:hover .kz-nav-chevron,
+.enterprise-sidebar--redesign .kz-nav-group-active .kz-nav-chevron {
+  opacity: 0.65;
+}
+
+/* Submenus */
+.enterprise-sidebar--redesign .kz-nav-nested-group {
+  margin: 0 0 0 0.5rem;
+  padding-left: 0.5rem;
+  border-left-color: var(--kz-nav-tree-line, var(--kz-border));
+}
+
+.enterprise-sidebar--redesign .kz-nav-nested-list {
+  gap: 4px;
+}
+
+.enterprise-sidebar--redesign .kz-nav-submenu {
+  margin-top: 0;
+}
+
+.enterprise-sidebar--redesign .kz-nav-item--child .kz-nav-child-marker {
+  width: 5px;
+  height: 5px;
+  margin-left: 0.375rem;
+  margin-right: 0;
+}
+
+.enterprise-sidebar--redesign .kz-nav-item--active .kz-nav-child-marker,
+.enterprise-sidebar--redesign .kz-nav-group-active .kz-nav-child-marker {
+  background: #b8d628;
+}
+
+.enterprise-sidebar--redesign .kz-sidebar-skeleton {
+  padding: 8px var(--sb-pad-x);
+}
+
+/* Beat light-mode global sidebar rules */
+html:not([data-theme="dark"]) .enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-stack {
+  gap: var(--sb-item-gap) !important;
+  padding: 0 !important;
+}
+
+html:not([data-theme="dark"]) .enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-section {
+  gap: var(--sb-item-gap) !important;
+}
+
+html:not([data-theme="dark"]) .enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-item:not(.kz-nav-item--child),
+html:not([data-theme="dark"]) .enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-group-toggle:not(.kz-nav-group-toggle--nested) {
+  min-height: var(--sb-item-h) !important;
+  height: var(--sb-item-h) !important;
+  padding: 0 var(--sb-pad-x) !important;
+  box-shadow: none !important;
+}
+
+html:not([data-theme="dark"]) .enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-item--active,
+html:not([data-theme="dark"]) .enterprise-sidebar.enterprise-sidebar--redesign .kz-nav-group-active {
+  box-shadow: none !important;
+  border: none !important;
+}

@@ -1,0 +1,405 @@
+/**
+ * Kaizen app theme — original green brand (git 5dbc867c).
+ * Chartreuse #D7FF31 highlights, sage #C8D1C1 accents, charcoal #2C2C2C chrome.
+ */
+
+:root,
+[data-theme="green"] {
+  --kz-primary-rgb: 44 44 44;
+  --kz-accent-rgb: 200 209 193;
+  --kz-highlight-rgb: 215 255 49;
+  --kz-text-rgb: 117 117 117;
+  --kz-bg: #F8FAFC;
+  --kz-bg-end: #F1F5F9;
+  --kz-surface: #ffffff;
+  --kz-surface-elevated: #ffffff;
+  --kz-surface-dark: #2C2C2C;
+  --kz-text: #0F172A;
+  --kz-text-primary: #0F172A;
+  --kz-text-secondary: #64748B;
+  --kz-text-inverse: #ffffff;
+  --kz-primary: #2C2C2C;
+  --kz-primary-hover: #1a1a1a;
+  --kz-primary-light: #3d3d3d;
+  --kz-accent: #C8D1C1;
+  --kz-accent-muted: #C8D1C1;
+  --kz-accent-vibrant: #D7FF31;
+  --kz-highlight: #D7FF31;
+  --kz-border: #E5E7EB;
+  --kz-border-strong: #CBD5E1;
+  --kz-shadow: rgba(44, 44, 44, 0.1);
+  --kz-shadow-accent: rgba(215, 255, 49, 0.35);
+  --kz-nav-bg: #EEF1F4;
+  --kz-nav-text: #1A1A1A;
+  --kz-nav-border: #E2E6EA;
+  --kz-sidebar-bg: #f8fafc;
+  --kz-sidebar-bg-end: #ffffff;
+  --kz-sidebar-border: rgba(15, 23, 42, 0.08);
+  --kz-nav-icon-bg: rgba(44, 44, 44, 0.05);
+  --kz-nav-icon-active-bg: rgba(215, 255, 49, 0.2);
+  --kz-nav-icon-active-border: rgba(184, 214, 40, 0.35);
+  --kz-nav-active-bg: rgba(215, 255, 49, 0.16);
+  --kz-nav-active-border: rgba(215, 255, 49, 0.22);
+  --kz-nav-item-hover-text: #0f172a;
+  --kz-nav-tree-line: rgba(15, 23, 42, 0.1);
+  --kz-table-header-bg: #f4f5f0;
+  --kz-table-header-text: #1A1A1A;
+  --kz-table-border: #C8D1C1;
+  --kz-hover-bg: rgba(200, 209, 193, 0.35);
+  --kz-active-bg: rgba(215, 255, 49, 0.22);
+  --kz-row-hover-bg: rgba(215, 255, 49, 0.08);
+  --kz-focus-ring: rgba(215, 255, 49, 0.45);
+  --kz-alert: #FF3B30;
+  --kz-success: #2E7D32;
+  --kz-warning: #EA580C;
+  --kz-info: #2563EB;
+  --kz-btn-primary-bg: #D7FF31;
+  --kz-btn-primary-hover: #B8D628;
+  --kz-btn-primary-text: #1A1A1A;
+  --kz-section-label: #757575;
+  /* Toast notifications — solid backgrounds (no bleed-through) */
+  --kz-toast-surface: #ffffff;
+  --kz-toast-border: rgba(15, 23, 42, 0.08);
+  --kz-toast-text: #0f172a;
+  --kz-toast-success-accent: #16a34a;
+  --kz-toast-info-accent: #2563eb;
+  --kz-toast-warning-accent: #ea580c;
+  --kz-toast-error-accent: #dc2626;
+  --kz-toast-success-bg: #ffffff;
+  --kz-toast-success-text: #0f172a;
+  --kz-toast-success-border: rgba(22, 163, 74, 0.2);
+  --kz-toast-info-bg: #ffffff;
+  --kz-toast-info-text: #0f172a;
+  --kz-toast-info-border: rgba(37, 99, 235, 0.2);
+  --kz-toast-warning-bg: #ffffff;
+  --kz-toast-warning-text: #0f172a;
+  --kz-toast-warning-border: rgba(234, 88, 12, 0.2);
+  --kz-toast-error-bg: #ffffff;
+  --kz-toast-error-text: #0f172a;
+  --kz-toast-error-border: rgba(220, 38, 38, 0.2);
+  /* Login page */
+  --kz-login-bg: #f5f7f4;
+  --kz-login-bg-end: #f5f7f4;
+  --kz-login-hero: #f5f7f4;
+  --kz-login-card: #ffffff;
+  --kz-login-primary: #2c2c2c;
+  --kz-login-primary-dark: #1a1a1a;
+  --kz-login-highlight: #d7ff31;
+  --kz-login-text: #1a1a1a;
+  --kz-login-muted: #757575;
+  --kz-login-border: rgba(44, 44, 44, 0.14);
+  --kz-login-glow: rgba(44, 44, 44, 0.12);
+  --kz-login-glow-accent: rgba(215, 255, 49, 0.4);
+  --kz-login-btn-text: #1a1a1a;
+  --kz-login-orb-accent: 215, 255, 49;
+  --kz-login-orb-primary: 44, 44, 44;
+  --kz-login-gradient-a: #f2f3ec;
+  --kz-login-gradient-b: #e9eae3;
+  --kz-login-gradient-c: #dde0d8;
+  --kz-input-bg: #ffffff;
+  --kz-btn-secondary-bg: #ffffff;
+  --kz-surface-secondary: #f1f5f9;
+  --kz-module-gradient-start: #ffffff;
+  --kz-loader-bg: #ffffff;
+  --kz-icon-btn-bg: #ffffff;
+  --kz-placeholder: #94a3b8;
+  --kz-card-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --kz-card-border-color: var(--kz-border);
+  --kz-nav-item-text: #64748B;
+  --kz-nav-item-icon: #2C2C2C;
+  --kz-nav-item-active-text: #0F172A;
+  --kz-nav-item-active-icon: #0F172A;
+  --kz-table-row-bg: #ffffff;
+  --kz-table-row-hover-bg: rgba(215, 255, 49, 0.08);
+  --kz-table-cell-text: var(--kz-text-primary);
+  --kz-kpi-shadow: var(--kz-card-shadow);
+  --kz-modal-bg: #ffffff;
+  --kz-modal-header-bg: linear-gradient(90deg, rgba(44, 44, 44, 0.08) 0%, rgba(215, 255, 49, 0.08) 100%);
+  --kz-shell-bg: #F8FAFC;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --kz-primary-rgb: 255 255 255;
+  --kz-accent-rgb: 215 255 49;
+  --kz-highlight-rgb: 215 255 49;
+  --kz-text-rgb: 203 213 225;
+  /* Page + content layers */
+  --kz-shell-bg: #0F172A;
+  --kz-bg: #111827;
+  --kz-bg-end: #111827;
+  --kz-module-gradient-start: #111827;
+  /* Surfaces */
+  --kz-surface: #1E293B;
+  --kz-surface-elevated: #243041;
+  --kz-surface-secondary: #1E293B;
+  --kz-surface-dark: #111827;
+  /* Typography */
+  --kz-text: #FFFFFF;
+  --kz-text-primary: #FFFFFF;
+  --kz-text-secondary: #94A3B8;
+  --kz-text-inverse: #111111;
+  --kz-kpi-label: #94A3B8;
+  --kz-hero-heading: #FFFFFF;
+  --kz-hero-subtitle: #E2E8F0;
+  --kz-primary: #FFFFFF;
+  --kz-primary-hover: #F8FAFC;
+  --kz-primary-light: #CBD5E1;
+  --kz-accent: #334155;
+  --kz-accent-muted: #94A3B8;
+  --kz-accent-vibrant: #D7FF31;
+  --kz-highlight: #D7FF31;
+  /* Borders — minimal, used only for shell + inputs */
+  --kz-border: #1F2937;
+  --kz-border-strong: #334155;
+  --kz-border-subtle: rgba(255, 255, 255, 0.06);
+  --kz-shadow: rgba(0, 0, 0, 0.25);
+  --kz-shadow-accent: rgba(215, 255, 49, 0.25);
+  /* Shell chrome */
+  --kz-nav-bg: #111827;
+  --kz-nav-text: #FFFFFF;
+  --kz-nav-border: #1F2937;
+  --kz-sidebar-bg: #0f172a;
+  --kz-sidebar-bg-end: #111827;
+  --kz-sidebar-border: #1f2937;
+  --kz-nav-icon-bg: rgba(255, 255, 255, 0.04);
+  --kz-nav-icon-active-bg: rgba(215, 255, 49, 0.14);
+  --kz-nav-icon-active-border: rgba(215, 255, 49, 0.28);
+  --kz-nav-active-bg: rgba(215, 255, 49, 0.1);
+  --kz-nav-active-border: rgba(215, 255, 49, 0.2);
+  --kz-nav-item-hover-text: #ffffff;
+  --kz-nav-tree-line: rgba(255, 255, 255, 0.1);
+  --kz-nav-child-marker: #475569;
+  --kz-nav-item-text: #CBD5E1;
+  --kz-nav-item-icon: #94A3B8;
+  --kz-nav-item-active-text: #FFFFFF;
+  --kz-nav-item-active-icon: #D7FF31;
+  --kz-active-bg: rgba(215, 255, 49, 0.12);
+  --kz-hover-bg: rgba(255, 255, 255, 0.05);
+  --kz-row-hover-bg: rgba(255, 255, 255, 0.04);
+  /* Cards + elevation */
+  --kz-card-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --kz-card-shadow-hover: 0 14px 36px rgba(0, 0, 0, 0.42);
+  --kz-kpi-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --kz-card-border-color: transparent;
+  --kz-radius-card: 16px;
+  /* Tables */
+  --kz-table-header-bg: #243041;
+  --kz-table-header-text: #FFFFFF;
+  --kz-table-row-bg: #1E293B;
+  --kz-table-row-hover-bg: #2A3648;
+  --kz-table-cell-text: #E2E8F0;
+  --kz-table-border: #1F2937;
+  /* Forms + dropdowns */
+  --kz-input-bg: #1E293B;
+  --kz-btn-secondary-bg: #1E293B;
+  --kz-placeholder: #94A3B8;
+  --kz-focus-ring: rgba(215, 255, 49, 0.4);
+  /* Modals */
+  --kz-modal-bg: #1E293B;
+  --kz-modal-header-bg: #243041;
+  /* Hero — high contrast slate + sage */
+  --kz-hero-bg: linear-gradient(135deg, #1e293b 0%, #475569 38%, #3f4a3c 72%, #334155 100%);
+  --kz-hero-overlay: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, transparent 55%);
+  /* Charts */
+  --kz-chart-axis: #CBD5E1;
+  --kz-chart-grid: rgba(255, 255, 255, 0.08);
+  /* Status */
+  --kz-alert: #EF4444;
+  --kz-success: #22C55E;
+  --kz-warning: #F59E0B;
+  --kz-info: #3B82F6;
+  --kz-btn-primary-bg: #D7FF31;
+  --kz-btn-primary-hover: #B8D628;
+  --kz-btn-primary-text: #111111;
+  --kz-section-label: #94A3B8;
+  --kz-icon-btn-bg: #1E293B;
+  --kz-loader-bg: #0F172A;
+  /* Toasts */
+  --kz-toast-surface: #1e293b;
+  --kz-toast-border: rgba(255, 255, 255, 0.1);
+  --kz-toast-text: #f8fafc;
+  --kz-toast-success-accent: #4ade80;
+  --kz-toast-info-accent: #60a5fa;
+  --kz-toast-warning-accent: #fb923c;
+  --kz-toast-error-accent: #f87171;
+  --kz-toast-success-bg: #1e293b;
+  --kz-toast-success-text: #f8fafc;
+  --kz-toast-success-border: rgba(74, 222, 128, 0.28);
+  --kz-toast-info-bg: #1e293b;
+  --kz-toast-info-text: #f8fafc;
+  --kz-toast-info-border: rgba(96, 165, 250, 0.28);
+  --kz-toast-warning-bg: #1e293b;
+  --kz-toast-warning-text: #f8fafc;
+  --kz-toast-warning-border: rgba(251, 146, 60, 0.28);
+  --kz-toast-error-bg: #1e293b;
+  --kz-toast-error-text: #f8fafc;
+  --kz-toast-error-border: rgba(248, 113, 113, 0.28);
+  /* Login */
+  --kz-login-bg: #0F172A;
+  --kz-login-bg-end: #111827;
+  --kz-login-hero: #0F172A;
+  --kz-login-card: #1E293B;
+  --kz-login-primary: #D7FF31;
+  --kz-login-primary-dark: #B8D628;
+  --kz-login-highlight: #d7ff31;
+  --kz-login-text: #FFFFFF;
+  --kz-login-muted: #94A3B8;
+  --kz-login-border: #334155;
+  --kz-login-glow: rgba(215, 255, 49, 0.12);
+  --kz-login-glow-accent: rgba(215, 255, 49, 0.35);
+  --kz-login-btn-text: #111111;
+  --kz-login-orb-accent: 215, 255, 49;
+  --kz-login-orb-primary: 17, 24, 39;
+  --kz-login-gradient-a: #0F172A;
+  --kz-login-gradient-b: #111827;
+  --kz-login-gradient-c: #1E293B;
+}
+
+[data-theme="green"] {
+  color-scheme: light;
+}
+
+html {
+  transition: color-scheme 250ms ease;
+}
+
+html.kz-theme-switching,
+html.kz-theme-switching *,
+html.kz-theme-switching *::before,
+html.kz-theme-switching *::after {
+  transition:
+    background-color 250ms ease,
+    background 250ms ease,
+    color 250ms ease,
+    border-color 250ms ease,
+    box-shadow 250ms ease,
+    fill 250ms ease,
+    stroke 250ms ease !important;
+}
+
+body {
+  background: var(--kz-bg);
+  color: var(--kz-text);
+}
+
+/* Header */
+.enterprise-top-nav {
+  background: var(--kz-nav-bg);
+  border-bottom: 1px solid var(--kz-nav-border);
+  box-shadow: 0 1px 0 var(--kz-shadow);
+}
+
+.enterprise-user-name {
+  color: var(--kz-text-primary);
+}
+
+.enterprise-user-meta,
+.enterprise-user-role {
+  color: var(--kz-text-secondary);
+}
+
+.enterprise-user-avatar {
+  background: var(--kz-accent-vibrant);
+  color: var(--kz-btn-primary-text);
+}
+
+.enterprise-icon-btn {
+  color: var(--kz-text-secondary);
+  background: var(--kz-icon-btn-bg);
+  border-color: var(--kz-border);
+}
+
+.kz-nav-item:not(.kz-nav-item--active):not(.kz-nav-group-active) {
+  color: var(--kz-nav-item-text);
+}
+
+.kz-nav-item:not(.kz-nav-item--active):not(.kz-nav-group-active) .kz-nav-icon,
+.kz-nav-item:not(.kz-nav-item--active):not(.kz-nav-group-active) .kz-nav-icon svg,
+.kz-nav-item:not(.kz-nav-item--active):not(.kz-nav-group-active) .kz-nav-icon [class*="lucide"] {
+  color: var(--kz-nav-item-icon);
+  opacity: 0.85;
+}
+
+.kz-nav-item--active,
+.kz-nav-group-active {
+  color: var(--kz-nav-item-active-text) !important;
+  background: var(--kz-active-bg) !important;
+}
+
+.kz-nav-item--active .kz-nav-icon,
+.kz-nav-item--active .kz-nav-icon svg,
+.kz-nav-item--active .kz-nav-icon [class*="lucide"],
+.kz-nav-group-active .kz-nav-icon,
+.kz-nav-group-active .kz-nav-icon svg,
+.kz-nav-group-active .kz-nav-icon [class*="lucide"] {
+  color: var(--kz-nav-item-active-icon) !important;
+  opacity: 1 !important;
+}
+
+[data-theme="dark"] .kz-btn-secondary {
+  color: #ffffff;
+  background: var(--kz-btn-secondary-bg);
+  border-color: var(--kz-border);
+}
+
+[data-theme="dark"] .kz-btn-secondary:hover:not(:disabled) {
+  background: var(--kz-surface-elevated);
+  border-color: var(--kz-accent-vibrant);
+}
+
+.enterprise-icon-btn:hover {
+  background: var(--kz-hover-bg);
+  border-color: var(--kz-border-strong);
+  color: var(--kz-text-primary);
+}
+
+.enterprise-icon-btn--danger:hover {
+  background: rgba(255, 59, 48, 0.08);
+  border-color: rgba(255, 59, 48, 0.25);
+  color: var(--kz-alert);
+}
+
+.enterprise-user-block:hover {
+  background: var(--kz-hover-bg);
+  border-color: var(--kz-border);
+}
+
+/* Sidebar — shell tokens; layout in kaizen-enterprise.css */
+.nav-section-label {
+  color: var(--kz-section-label);
+}
+
+/* Tables */
+table th {
+  background-color: var(--kz-table-header-bg);
+  color: var(--kz-table-header-text);
+  border-bottom-color: var(--kz-table-border);
+}
+
+table td {
+  color: var(--kz-text-secondary);
+}
+
+table tbody tr:hover {
+  background-color: var(--kz-row-hover-bg);
+}
+
+form input,
+form select,
+form textarea {
+  border-color: var(--kz-border);
+  color: var(--kz-text-primary);
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  outline: 2px solid var(--kz-focus-ring);
+  border-color: var(--kz-accent-vibrant);
+}
+
+/* Login — see login-enterprise.css for layout and components */
+.login-page {
+  color: var(--kz-login-text);
+}
