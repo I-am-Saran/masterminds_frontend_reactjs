@@ -41,7 +41,7 @@ function buildUrl(path) {
 
   if (base && p.startsWith("/api/")) {
     // Production: proxy strips first /api, so send /api/api/... so backend gets /api/...
-    p = "/api" + p;
+    // p = "/api" + p;
   }
   return base ? `${base}${p}` : p;
 }
