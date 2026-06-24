@@ -521,6 +521,178 @@
   color: var(--kz-text-secondary);
 }
 
+/* ── Universal dark theme fallbacks ── */
+[data-theme="dark"] {
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+[data-theme="dark"] *::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+[data-theme="dark"] *::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+[data-theme="dark"] *::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 999px;
+  border: 2px solid var(--scrollbar-track);
+}
+
+[data-theme="dark"] *::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+[data-theme="dark"] .bg-white,
+[data-theme="dark"] .bg-\[\#ffffff\],
+[data-theme="dark"] .bg-\[\#fff\] {
+  background-color: var(--surface-primary) !important;
+}
+
+[data-theme="dark"] .bg-slate-50,
+[data-theme="dark"] .bg-slate-100,
+[data-theme="dark"] .bg-gray-50,
+[data-theme="dark"] .bg-gray-100,
+[data-theme="dark"] .bg-neutral-50,
+[data-theme="dark"] .bg-neutral-100,
+[data-theme="dark"] .bg-card {
+  background-color: var(--surface-secondary) !important;
+}
+
+[data-theme="dark"] .hover\:bg-neutral-50:hover,
+[data-theme="dark"] .hover\:bg-neutral-100:hover,
+[data-theme="dark"] .hover\:bg-slate-50:hover,
+[data-theme="dark"] .hover\:bg-slate-100:hover,
+[data-theme="dark"] .hover\:bg-gray-50:hover,
+[data-theme="dark"] .hover\:bg-red-50:hover {
+  background-color: var(--surface-hover) !important;
+}
+
+[data-theme="dark"] .border-slate-100,
+[data-theme="dark"] .border-slate-200,
+[data-theme="dark"] .border-slate-300,
+[data-theme="dark"] .border-gray-100,
+[data-theme="dark"] .border-gray-200,
+[data-theme="dark"] .border-gray-300,
+[data-theme="dark"] .border-neutral-100,
+[data-theme="dark"] .border-neutral-200,
+[data-theme="dark"] .border-neutral-300,
+[data-theme="dark"] .border-\[color\:var\(--kz-border\)\] {
+  border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] .text-black,
+[data-theme="dark"] .text-gray-900,
+[data-theme="dark"] .text-slate-900,
+[data-theme="dark"] .text-slate-800,
+[data-theme="dark"] .text-gray-800,
+[data-theme="dark"] .text-neutral-900,
+[data-theme="dark"] .text-neutral-800,
+[data-theme="dark"] .text-\[\#2d5a8f\] {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .text-gray-700,
+[data-theme="dark"] .text-gray-600,
+[data-theme="dark"] .text-gray-500,
+[data-theme="dark"] .text-slate-700,
+[data-theme="dark"] .text-slate-600,
+[data-theme="dark"] .text-slate-500,
+[data-theme="dark"] .text-slate-400,
+[data-theme="dark"] .text-neutral-700,
+[data-theme="dark"] .text-neutral-600,
+[data-theme="dark"] .text-neutral-500,
+[data-theme="dark"] .text-neutral-400 {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .bug-detail-section,
+[data-theme="dark"] .bug-detail-meta,
+[data-theme="dark"] .bug-detail-timestamps,
+[data-theme="dark"] .user-detail-modal-hero,
+[data-theme="dark"] .workflow-detail-card,
+[data-theme="dark"] .detail-side-panel,
+[data-theme="dark"] .admin-detail-card {
+  background: var(--surface-secondary) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .bug-detail-section-title,
+[data-theme="dark"] .bug-detail-meta-value,
+[data-theme="dark"] .bug-detail-id,
+[data-theme="dark"] .user-detail-modal-avatar,
+[data-theme="dark"] .admin-permissions-table th,
+[data-theme="dark"] .admin-permissions-table td {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .bug-detail-section-subtitle,
+[data-theme="dark"] .bug-detail-meta-label,
+[data-theme="dark"] .bug-detail-timestamp {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .admin-permissions-table thead th {
+  background: var(--table-header-bg) !important;
+  border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] .admin-permissions-table tbody tr,
+[data-theme="dark"] .table tbody tr {
+  background: var(--table-row-bg) !important;
+}
+
+[data-theme="dark"] .admin-permissions-table tbody tr:hover,
+[data-theme="dark"] .table tbody tr:hover {
+  background: var(--table-row-hover-bg) !important;
+}
+
+[data-theme="dark"] label,
+[data-theme="dark"] .wf-field-label,
+[data-theme="dark"] .admin-label,
+[data-theme="dark"] .form-label {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] label .text-red-500,
+[data-theme="dark"] label .text-red-600,
+[data-theme="dark"] label .required,
+[data-theme="dark"] .required-marker {
+  color: var(--danger-color) !important;
+}
+
+[data-theme="dark"] input:not([type="checkbox"]):not([type="radio"]),
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background: var(--input-bg);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] input:not([type="checkbox"]):not([type="radio"])::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] input:not([type="checkbox"]):not([type="radio"]):focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px var(--kz-focus-ring);
+}
+
+[data-theme="dark"] .kz-modal-panel,
+[data-theme="dark"] .kz-modal-panel--ticket-form,
+[data-theme="dark"] [role="dialog"] .bg-white,
+[data-theme="dark"] aside[role="dialog"] {
+  background: var(--surface-primary) !important;
+  color: var(--text-primary);
+  border-color: var(--border-color) !important;
+}
+
 [data-theme="dark"] select,
 [data-theme="dark"] .kz-input[type="search"] {
   background: var(--kz-input-bg);

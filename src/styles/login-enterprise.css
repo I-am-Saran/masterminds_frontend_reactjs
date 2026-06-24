@@ -1027,7 +1027,7 @@
   font-size: 0.8125rem;
   font-weight: 600;
   line-height: 1.25;
-  color: #334155;
+  color: var(--text-secondary, var(--kz-text-secondary));
 }
 
 .login-page__password-wrap {
@@ -1043,9 +1043,9 @@
   border-radius: 8px;
   font-size: 0.875rem;
   line-height: 1.25;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(15, 23, 42, 0.1);
-  color: #1a1a1a;
+  background: color-mix(in srgb, var(--input-bg, var(--kz-input-bg)) 95%, transparent);
+  border: 1px solid var(--border-color, var(--kz-border));
+  color: var(--text-primary, var(--kz-text-primary));
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -1054,11 +1054,11 @@
 }
 
 .login-page__input::placeholder {
-  color: #94a3b8;
+  color: var(--text-muted, var(--kz-placeholder));
 }
 
 .login-page__input:hover:not(:disabled) {
-  border-color: rgba(15, 23, 42, 0.2);
+  border-color: var(--kz-border-strong, var(--border-color, var(--kz-border)));
 }
 
 .login-page__input:focus,
@@ -1090,13 +1090,13 @@
   padding: 4px;
   border: none;
   background: transparent;
-  color: #64748b;
+  color: var(--text-muted, var(--kz-placeholder));
   cursor: pointer;
   transition: color 0.15s ease;
 }
 
 .login-page__icon-btn:hover:not(:disabled) {
-  color: #334155;
+  color: var(--text-primary, var(--kz-text-primary));
 }
 
 .login-page__icon-btn:focus-visible {
@@ -1257,20 +1257,20 @@
   content: "";
   flex: 1;
   height: 1px;
-  background: #e2e8f0;
+  background: var(--border-color, var(--kz-border));
 }
 
 .login-page__btn--microsoft {
-  background: #ffffff;
-  border: 1px solid #d1d5db;
-  color: #1f2937;
+  background: var(--surface-primary, var(--kz-surface));
+  border: 1px solid var(--border-color, var(--kz-border));
+  color: var(--text-primary, var(--kz-text-primary));
   gap: 10px;
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
 }
 
 .login-page__btn--microsoft:hover:not(:disabled) {
-  background: #f9fafb;
-  border-color: rgba(215, 255, 49, 0.55);
+  background: var(--surface-hover, var(--kz-hover-bg));
+  border-color: color-mix(in srgb, var(--accent-color, var(--kz-accent-vibrant)) 55%, var(--border-color, var(--kz-border)) 45%);
   box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
   transform: translateY(-1px);
 }

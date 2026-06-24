@@ -150,8 +150,8 @@ export default function UserRoles() {
             {initial}
           </span>
           <div className="min-w-0">
-            <h2 className="text-base font-semibold text-slate-900 truncate">{displayName}</h2>
-            <p className="text-sm text-slate-600 truncate">{userProfile?.email || userId}</p>
+            <h2 className="text-base font-semibold text-[color:var(--text-primary,var(--kz-text-primary))] truncate">{displayName}</h2>
+            <p className="text-sm text-[color:var(--text-secondary,var(--kz-text-secondary))] truncate">{userProfile?.email || userId}</p>
           </div>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 shrink-0 w-full sm:w-auto">

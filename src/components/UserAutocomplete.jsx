@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { get } from "../services/api";
-import { THEME_COLORS } from "../constants/colors";
 
 /**
  * Reusable User Autocomplete Component
@@ -41,6 +40,15 @@ export default function UserAutocomplete({
   const dropdownRef = useRef(null);
   const debounceTimerRef = useRef(null);
   const isFocusedRef = useRef(false);
+  const labelColor = "var(--text-secondary, var(--kz-text-secondary))";
+  const inputBackground = "var(--input-bg, var(--kz-input-bg))";
+  const surfacePrimary = "var(--surface-primary, var(--kz-surface))";
+  const surfaceSecondary = "var(--surface-secondary, var(--kz-surface-secondary))";
+  const textPrimary = "var(--text-primary, var(--kz-text-primary))";
+  const textSecondary = "var(--text-secondary, var(--kz-text-secondary))";
+  const textMuted = "var(--text-muted, var(--kz-placeholder))";
+  const borderColor = "var(--border-color, var(--kz-border))";
+  const dangerColor = "var(--danger-color, var(--kz-alert))";
 
   // Debounced search function
   const debouncedSearch = useCallback((query) => {
@@ -255,12 +263,12 @@ export default function UserAutocomplete({
             display: "block",
             fontSize: "0.875rem",
             fontWeight: "500",
-            color: "#374151",
+            color: labelColor,
             marginBottom: "0.5rem",
           }}
         >
           {label}
-          {required && <span style={{ color: "#ef4444", marginLeft: "0.25rem" }}>*</span>}
+          {required && <span style={{ color: dangerColor, marginLeft: "0.25rem" }}>*</span>}
         </label>
       )}
       
@@ -273,11 +281,12 @@ export default function UserAutocomplete({
               style={{
                 display: "flex",
                 alignItems: "center",
-                backgroundColor: "#e0f2fe", // light blue
-                color: "#0369a1", // dark blue
+                backgroundColor: surfaceSecondary,
+                color: textPrimary,
                 padding: "0.25rem 0.5rem",
                 borderRadius: "0.25rem",
                 fontSize: "0.875rem",
+                border: `1px solid ${borderColor}`,
               }}
             >
               <span>{email}</span>
@@ -290,7 +299,7 @@ export default function UserAutocomplete({
                     border: "none",
                     background: "transparent",
                     cursor: "pointer",
-                    color: "#0369a1",
+                    color: textSecondary,
                     fontWeight: "bold",
                     padding: "0 2px",
                   }}
@@ -319,16 +328,18 @@ export default function UserAutocomplete({
           disabled={disabled}
           style={{
             width: "100%",
-          padding: "0.5rem 0.75rem",
-            border: `1px solid ${THEME_COLORS.lightBlue}`,
+            padding: "0.5rem 0.75rem",
+            border: `1px solid ${borderColor}`,
             borderRadius: "0.5rem",
             fontSize: "0.875rem",
             boxSizing: "border-box",
             outline: "none",
             transition: "all 0.2s ease",
-          height: "40px",
-          lineHeight: "20px",
-          ...inputStyle,
+            height: "40px",
+            lineHeight: "20px",
+            backgroundColor: inputBackground,
+            color: textPrimary,
+            ...inputStyle,
           }}
           onKeyDown={(e) => {
             if (e.key === "Escape") {
@@ -349,7 +360,7 @@ export default function UserAutocomplete({
               top: "50%",
               transform: "translateY(-50%)",
               fontSize: "0.75rem",
-              color: "#6b7280",
+              color: textMuted,
             }}
           >
             Searching...
@@ -366,10 +377,10 @@ export default function UserAutocomplete({
             left: 0,
             right: 0,
             marginTop: "0.25rem",
-            backgroundColor: "#ffffff",
-            border: `1px solid ${THEME_COLORS.lightBlue}`,
+            backgroundColor: surfacePrimary,
+            border: `1px solid ${borderColor}`,
             borderRadius: "0.75rem",
-            boxShadow: "0 8px 24px rgba(15, 23, 42, 0.08)",
+            boxShadow: "var(--kz-card-shadow)",
             zIndex: 2000,
             maxHeight: "300px",
             overflowY: "auto",
@@ -389,7 +400,7 @@ export default function UserAutocomplete({
                 backgroundColor: "transparent",
                 cursor: "pointer",
                 fontSize: "0.875rem",
-                color: "#374151",
+                color: textPrimary,
               }}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
@@ -409,16 +420,16 @@ export default function UserAutocomplete({
                 }
               }}
             >
-              <div style={{ fontWeight: "500", color: THEME_COLORS.darkTeal }}>
+              <div style={{ fontWeight: "500", color: textPrimary }}>
                 {displayField === "full_name" ? (user.full_name || user.name || user.email || "No email") : (user.email || "No email")}
               </div>
               {displayField !== "full_name" && user.full_name && (
-                <div style={{ fontSize: "0.75rem", color: "#6b7280", marginTop: "0.25rem" }}>
+                <div style={{ fontSize: "0.75rem", color: textSecondary, marginTop: "0.25rem" }}>
                   {user.full_name}
                 </div>
               )}
               {user.department && (
-                <div style={{ fontSize: "0.75rem", color: "#9ca3af", marginTop: "0.125rem" }}>
+                <div style={{ fontSize: "0.75rem", color: textMuted, marginTop: "0.125rem" }}>
                   {user.department}
                 </div>
               )}
@@ -434,12 +445,12 @@ export default function UserAutocomplete({
             left: 0,
             right: 0,
             marginTop: "0.25rem",
-            backgroundColor: "#ffffff",
-            border: `1px solid ${THEME_COLORS.lightBlue}`,
+            backgroundColor: surfacePrimary,
+            border: `1px solid ${borderColor}`,
             borderRadius: "0.5rem",
             padding: "1rem",
             textAlign: "center",
-            color: "#6b7280",
+            color: textSecondary,
             fontSize: "0.875rem",
             zIndex: 1000,
           }}

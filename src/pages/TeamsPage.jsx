@@ -189,12 +189,12 @@ export default function TeamsPage() {
       minWidth: "240px",
       cell: (row) => (
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center text-emerald-700 font-semibold">
+          <div className="w-9 h-9 rounded-lg flex items-center justify-center font-semibold" style={{ background: "var(--surface-secondary, var(--kz-surface-secondary))", color: "var(--accent-color, var(--kz-accent-vibrant))" }}>
             {String(row.name || "?").charAt(0).toUpperCase()}
           </div>
           <div>
-            <div className="font-medium text-gray-900">{row.name}</div>
-            <div className="text-xs text-gray-500">{row.description || "—"}</div>
+            <div className="font-medium text-[color:var(--text-primary,var(--kz-text-primary))]">{row.name}</div>
+            <div className="text-xs text-[color:var(--text-secondary,var(--kz-text-secondary))]">{row.description || "—"}</div>
           </div>
         </div>
       ),

@@ -79,12 +79,12 @@ export default function EmailNotificationsPage() {
       grow: 2,
       cell: (row) => (
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center text-amber-700">
+          <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: "var(--surface-secondary, var(--kz-surface-secondary))", color: "var(--accent-color, var(--kz-accent-vibrant))" }}>
             <Bell size={16} />
           </div>
           <div>
-            <div className="font-medium text-gray-900">{row.event_name}</div>
-            <div className="text-xs text-gray-500 font-mono">{row.event_code}</div>
+            <div className="font-medium text-[color:var(--text-primary,var(--kz-text-primary))]">{row.event_name}</div>
+            <div className="text-xs text-[color:var(--text-secondary,var(--kz-text-secondary))] font-mono">{row.event_code}</div>
           </div>
         </div>
       ),
@@ -99,9 +99,9 @@ export default function EmailNotificationsPage() {
             type="checkbox"
             checked={Boolean(row.email_enabled)}
             onChange={(e) => toggleEvent(row.id, e.target.checked)}
-            className="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+            className="h-4 w-4 rounded border-[color:var(--border-color,var(--kz-border))] text-emerald-600 focus:ring-emerald-500"
           />
-          <span className="text-sm text-gray-700">{row.email_enabled ? "Enabled" : "Disabled"}</span>
+          <span className="text-sm text-[color:var(--text-secondary,var(--kz-text-secondary))]">{row.email_enabled ? "Enabled" : "Disabled"}</span>
         </label>
       ),
     },

@@ -41,16 +41,16 @@ function useDebouncedSave(callback, delay = DEBOUNCE_MS) {
 }
 
 const cellInputClass =
-  "w-full text-sm bg-transparent border-0 border-b border-transparent hover:border-neutral-200 focus:border-accent focus:outline-none px-1 py-1.5 transition-colors";
+  "w-full text-sm bg-transparent border-0 border-b border-transparent text-[color:var(--text-primary,var(--kz-text-primary))] hover:border-[color:var(--border-color,var(--kz-border))] focus:border-[color:var(--accent-color,var(--kz-accent-vibrant))] focus:outline-none px-1 py-1.5 transition-colors";
 
 const titleTextareaClass =
-  "w-full text-sm bg-neutral-50/80 border border-neutral-200/80 hover:border-neutral-300 focus:border-accent focus:bg-white focus:outline-none focus:ring-1 focus:ring-accent/30 rounded-lg px-2.5 py-2 leading-relaxed resize-none transition-colors";
+  "w-full text-sm bg-[color:var(--surface-secondary,var(--kz-surface-secondary))]/80 border border-[color:var(--border-color,var(--kz-border))] hover:border-[color:var(--border-color,var(--kz-border-strong))] focus:border-[color:var(--accent-color,var(--kz-accent-vibrant))] focus:bg-[color:var(--surface-primary,var(--kz-surface))] text-[color:var(--text-primary,var(--kz-text-primary))] focus:outline-none focus:ring-1 focus:ring-[color:var(--kz-focus-ring)] rounded-lg px-2.5 py-2 leading-relaxed resize-none transition-colors";
 
 const TITLE_MIN_HEIGHT_PX = 72;
 const TITLE_MAX_HEIGHT_PX = 200;
 
 const selectClass =
-  "w-full text-xs bg-transparent border border-transparent hover:border-neutral-200 focus:border-accent focus:outline-none rounded px-1 py-1 cursor-pointer";
+  "w-full text-xs bg-transparent border border-transparent text-[color:var(--text-primary,var(--kz-text-primary))] hover:border-[color:var(--border-color,var(--kz-border))] focus:border-[color:var(--accent-color,var(--kz-accent-vibrant))] focus:outline-none rounded px-1 py-1 cursor-pointer";
 
 function ActionItemTitleField({
   value,
@@ -82,7 +82,7 @@ function ActionItemTitleField({
   if (readOnly || disabled) {
     return (
       <div
-        className="text-sm text-neutral-700 whitespace-pre-wrap break-words px-2 py-2 min-h-[72px] rounded-lg bg-neutral-50/50 border border-neutral-100"
+        className="text-sm whitespace-pre-wrap break-words px-2 py-2 min-h-[72px] rounded-lg bg-[color:var(--surface-secondary,var(--kz-surface-secondary))]/50 text-[color:var(--text-secondary,var(--kz-text-secondary))] border border-[color:var(--border-color,var(--kz-border))]"
       >
         {value || "—"}
       </div>
@@ -262,7 +262,7 @@ export default function ActionItemsGrid({
     <tr
       key={item.id}
       id={isNew ? undefined : `mom-action-item-${item.id}`}
-      className={`group border-b border-neutral-100 hover:bg-neutral-50/80 transition-colors ${
+      className={`group border-b border-[color:var(--border-color,var(--kz-border))] hover:bg-[color:var(--surface-hover,var(--kz-hover-bg))] transition-colors ${
         isHighlighted ? "bg-[#5a9ba8]/10 ring-2 ring-inset ring-[#5a9ba8]/40" : ""
       }`}
     >
@@ -280,7 +280,7 @@ export default function ActionItemsGrid({
         />
       </td>
       {showMeetingColumn && (
-        <td className="px-2 py-2 text-xs text-neutral-500 whitespace-nowrap align-top">
+        <td className="px-2 py-2 text-xs text-[color:var(--text-secondary,var(--kz-text-secondary))] whitespace-nowrap align-top">
           {item.meeting_title || "—"}
         </td>
       )}
@@ -348,7 +348,7 @@ export default function ActionItemsGrid({
             <button
               type="button"
               onClick={(e) => { e.stopPropagation(); setCommentTarget(item); }}
-              className="inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md hover:bg-neutral-100 transition-colors"
+              className="inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md hover:bg-[color:var(--surface-hover,var(--kz-hover-bg))] transition-colors"
               style={{ color: THEME_COLORS.mediumTeal }}
             >
               <MessageSquare size={13} />
@@ -367,14 +367,14 @@ export default function ActionItemsGrid({
               <button
                 type="button"
                 onClick={() => setNewRow(null)}
-                className="text-xs px-2 py-1 rounded text-neutral-500 hover:bg-neutral-100"
+                className="text-xs px-2 py-1 rounded text-[color:var(--text-secondary,var(--kz-text-secondary))] hover:bg-[color:var(--surface-hover,var(--kz-hover-bg))]"
               >
                 Cancel
               </button>
             </>
           ) : null}
           {savingIds.has(item.id) && (
-            <span className="text-[10px] text-neutral-400">Saving…</span>
+            <span className="text-[10px] text-[color:var(--text-muted,var(--kz-placeholder))]">Saving…</span>
           )}
         </div>
       </td>
@@ -384,7 +384,7 @@ export default function ActionItemsGrid({
 
   return (
     <>
-      <div className="rounded-xl border border-neutral-200 bg-white">
+      <div className="rounded-xl border border-[color:var(--border-color,var(--kz-border))] bg-[color:var(--surface-primary,var(--kz-surface))]">
         <div className="overflow-x-auto max-h-[calc(100vh-320px)] overflow-y-auto">
           <table className="w-full text-left border-collapse table-fixed">
             <colgroup>
@@ -396,29 +396,29 @@ export default function ActionItemsGrid({
               <col style={{ width: 72 }} />
               <col style={{ width: 100 }} />
             </colgroup>
-            <thead className="sticky top-0 z-10 bg-neutral-50 border-b border-neutral-200">
+            <thead className="sticky top-0 z-10 bg-[color:var(--table-header-bg,var(--kz-table-header-bg))] border-b border-[color:var(--border-color,var(--kz-border))]">
               <tr>
-                <th className="px-2 py-2 text-xs font-semibold uppercase tracking-wide text-neutral-500 w-auto">
+                <th className="px-2 py-2 text-xs font-semibold uppercase tracking-wide text-[color:var(--text-secondary,var(--kz-text-secondary))] w-auto">
                   Action Item
                 </th>
                 {showMeetingColumn && (
-                  <th className="px-2 py-2 text-xs font-semibold uppercase tracking-wide text-neutral-500">
+                  <th className="px-2 py-2 text-xs font-semibold uppercase tracking-wide text-[color:var(--text-secondary,var(--kz-text-secondary))]">
                     Meeting
                   </th>
                 )}
-                <th className="px-2 py-2 text-xs font-semibold uppercase tracking-wide text-neutral-500">
+                <th className="px-2 py-2 text-xs font-semibold uppercase tracking-wide text-[color:var(--text-secondary,var(--kz-text-secondary))]">
                   Assignee
                 </th>
-                <th className="px-2 py-2 text-xs font-semibold uppercase tracking-wide text-neutral-500">
+                <th className="px-2 py-2 text-xs font-semibold uppercase tracking-wide text-[color:var(--text-secondary,var(--kz-text-secondary))]">
                   Due Date
                 </th>
-                <th className="px-2 py-2 text-xs font-semibold uppercase tracking-wide text-neutral-500">
+                <th className="px-2 py-2 text-xs font-semibold uppercase tracking-wide text-[color:var(--text-secondary,var(--kz-text-secondary))]">
                   Status
                 </th>
-                <th className="px-2 py-2 text-xs font-semibold uppercase tracking-wide text-neutral-500">
+                <th className="px-2 py-2 text-xs font-semibold uppercase tracking-wide text-[color:var(--text-secondary,var(--kz-text-secondary))]">
                   Priority
                 </th>
-                <th className="px-2 py-2 text-xs font-semibold uppercase tracking-wide text-neutral-500">
+                <th className="px-2 py-2 text-xs font-semibold uppercase tracking-wide text-[color:var(--text-secondary,var(--kz-text-secondary))]">
                   Comments
                 </th>
               </tr>
@@ -426,7 +426,7 @@ export default function ActionItemsGrid({
             <tbody>
               {items.length === 0 && !newRow && (
                 <tr>
-                  <td colSpan={showMeetingColumn ? 7 : 6} className="text-center py-8 text-sm text-neutral-400">
+                  <td colSpan={showMeetingColumn ? 7 : 6} className="text-center py-8 text-sm text-[color:var(--text-muted,var(--kz-placeholder))]">
                     No action items yet
                   </td>
                 </tr>
@@ -440,8 +440,8 @@ export default function ActionItemsGrid({
           <button
             type="button"
             onClick={handleAddRow}
-            className="w-full flex items-center justify-center gap-1.5 py-2.5 text-sm font-medium border-t border-neutral-100 hover:bg-neutral-50 transition-colors"
-            style={{ color: THEME_COLORS.deepBlue }}
+            className="w-full flex items-center justify-center gap-1.5 py-2.5 text-sm font-medium border-t border-[color:var(--border-color,var(--kz-border))] hover:bg-[color:var(--surface-hover,var(--kz-hover-bg))] transition-colors"
+            style={{ color: "var(--text-primary, var(--kz-text-primary))" }}
           >
             <Plus size={16} />
             Add action item

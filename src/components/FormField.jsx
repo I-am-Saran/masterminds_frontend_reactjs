@@ -18,6 +18,9 @@ export default function FormField({
   const autoId = useId();
   const base = typeof label === "string" ? label.toLowerCase().replace(/\s+/g, "-") : "field";
   const id = providedId || `${base}-${autoId}`;
+  const labelClass = "text-sm text-[color:var(--text-secondary,var(--kz-text-secondary))]";
+  const fieldClass =
+    "w-full rounded-xl border px-3 py-2 transition bg-[color:var(--input-bg,var(--kz-input-bg))] border-[color:var(--border-color,var(--kz-border))] text-[color:var(--text-primary,var(--kz-text-primary))] placeholder:text-[color:var(--text-muted,var(--kz-placeholder))] focus:outline-none focus:ring-2 focus:ring-[color:var(--kz-focus-ring)] focus:border-[color:var(--accent-color,var(--kz-accent-vibrant))]";
 
   if (type === "select") {
     const hasEmptyOption = options.some((o) =>
@@ -40,7 +43,7 @@ export default function FormField({
     return (
       <div className="grid gap-1">
         {label ? (
-          <label htmlFor={id} className="text-sm text-[color:var(--kz-text-secondary)]">
+          <label htmlFor={id} className={labelClass}>
             {label}
           </label>
         ) : null}
@@ -61,7 +64,7 @@ export default function FormField({
   if (type === "textarea") {
     return (
       <div className="grid gap-1">
-        {label && <label htmlFor={id} className="text-sm text-gray-700">{label}</label>}
+        {label && <label htmlFor={id} className={labelClass}>{label}</label>}
         <textarea
           id={id}
           name={name}
@@ -71,7 +74,7 @@ export default function FormField({
           readOnly={readOnly}
           required={required}
           autoComplete={autoComplete}
-          className="min-h-28 w-full rounded-xl bg-white border border-neutral-300 px-3 py-2 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition"
+          className={`min-h-28 ${fieldClass}`}
         />
       </div>
     );
@@ -79,7 +82,7 @@ export default function FormField({
 
   return (
     <div className="grid gap-1">
-      {label && <label htmlFor={id} className="text-sm text-gray-700">{label}</label>}
+      {label && <label htmlFor={id} className={labelClass}>{label}</label>}
       <input
         id={id}
         name={name}
@@ -91,7 +94,7 @@ export default function FormField({
         required={required}
         autoComplete={autoComplete}
         disabled={disabled}
-        className="w-full rounded-xl bg-white border border-neutral-300 px-3 py-2 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition"
+        className={fieldClass}
       />
     </div>
   );

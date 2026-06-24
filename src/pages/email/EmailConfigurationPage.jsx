@@ -45,10 +45,13 @@ function StatusBadge({ active }) {
       className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold ${
         active
           ? "border-emerald-200 bg-emerald-50 text-emerald-800"
-          : "border-slate-200 bg-slate-50 text-slate-600"
+          : "border-[color:var(--border-color,var(--kz-border))] bg-[color:var(--surface-secondary,var(--kz-surface-secondary))] text-[color:var(--text-secondary,var(--kz-text-secondary))]"
       }`}
     >
-      <span className={`h-1.5 w-1.5 rounded-full ${active ? "bg-emerald-500" : "bg-slate-400"}`} />
+      <span
+        className="h-1.5 w-1.5 rounded-full"
+        style={{ background: active ? "#10b981" : "var(--text-muted, var(--kz-placeholder))" }}
+      />
       {active ? "Active" : "Inactive"}
     </span>
   );
@@ -198,12 +201,12 @@ export default function EmailConfigurationPage() {
       grow: 2,
       cell: (row) => (
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-sky-100 to-indigo-100 flex items-center justify-center text-indigo-700">
+          <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: "var(--surface-secondary, var(--kz-surface-secondary))", color: "var(--accent-color, var(--kz-accent-vibrant))" }}>
             <Mail size={16} />
           </div>
           <div>
-            <div className="font-medium text-gray-900">{row.configuration_name}</div>
-            <div className="text-xs text-gray-500">{row.smtp_host}:{row.smtp_port}</div>
+            <div className="font-medium text-[color:var(--text-primary,var(--kz-text-primary))]">{row.configuration_name}</div>
+            <div className="text-xs text-[color:var(--text-secondary,var(--kz-text-secondary))]">{row.smtp_host}:{row.smtp_port}</div>
           </div>
         </div>
       ),
@@ -304,12 +307,12 @@ export default function EmailConfigurationPage() {
               required
             />
           </div>
-          <label className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+          <label className="flex items-center gap-2 text-sm text-[color:var(--text-secondary,var(--kz-text-secondary))] cursor-pointer">
             <input
               type="checkbox"
               checked={form.authentication_required}
               onChange={(e) => setForm({ ...form, authentication_required: e.target.checked })}
-              className="rounded border-gray-300"
+              className="rounded border-[color:var(--border-color,var(--kz-border))]"
             />
             Authentication Required
           </label>
@@ -340,12 +343,12 @@ export default function EmailConfigurationPage() {
             value={form.from_name}
             onChange={(e) => setForm({ ...form, from_name: e.target.value })}
           />
-          <label className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+          <label className="flex items-center gap-2 text-sm text-[color:var(--text-secondary,var(--kz-text-secondary))] cursor-pointer">
             <input
               type="checkbox"
               checked={form.is_active}
               onChange={(e) => setForm({ ...form, is_active: e.target.checked })}
-              className="rounded border-gray-300"
+              className="rounded border-[color:var(--border-color,var(--kz-border))]"
             />
             Active (only one configuration can be active)
           </label>

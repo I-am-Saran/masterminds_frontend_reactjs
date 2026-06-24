@@ -2,7 +2,6 @@ import React, { useMemo, useState } from "react";
 import { UserRound } from "lucide-react";
 import Modal from "../Modal";
 import UserAutocomplete from "../UserAutocomplete";
-import { THEME_COLORS } from "../../constants/colors";
 
 function formatAssigneeLabel(email, nameByEmail) {
   if (!email) return "Unassigned";
@@ -62,19 +61,19 @@ export default function ActionItemAssigneePicker({
         <button
           type="button"
           onClick={openPicker}
-          className="flex-1 min-w-0 text-left text-sm px-1 py-1 rounded hover:bg-neutral-100 transition-colors truncate text-neutral-700"
+          className="flex-1 min-w-0 text-left text-sm px-1 py-1 rounded transition-colors truncate text-[color:var(--text-secondary,var(--kz-text-secondary))] hover:bg-[color:var(--surface-hover,var(--kz-hover-bg))]"
           title={value ? `${displayLabel} (${value})` : "Click to assign"}
         >
-          <span className={!value ? "text-neutral-400 italic" : ""}>{displayLabel}</span>
+          <span className={!value ? "text-[color:var(--text-muted,var(--kz-placeholder))] italic" : ""}>{displayLabel}</span>
         </button>
         <button
           type="button"
           onClick={openPicker}
-          className="shrink-0 p-1.5 rounded-md border border-neutral-200 hover:bg-neutral-50 text-neutral-600 transition-colors"
+          className="shrink-0 p-1.5 rounded-md border transition-colors border-[color:var(--border-color,var(--kz-border))] hover:bg-[color:var(--surface-hover,var(--kz-hover-bg))] text-[color:var(--text-secondary,var(--kz-text-secondary))]"
           aria-label="Assign user"
           title="Assign user"
         >
-          <UserRound size={14} style={{ color: THEME_COLORS.mediumTeal }} />
+          <UserRound size={14} style={{ color: "var(--accent-color, var(--kz-accent-vibrant))" }} />
         </button>
       </div>
 
@@ -88,7 +87,7 @@ export default function ActionItemAssigneePicker({
         maxWidth="480px"
       >
         <div className="space-y-3" onClick={(e) => e.stopPropagation()}>
-          <p className="text-sm text-neutral-600">
+          <p className="text-sm text-[color:var(--text-secondary,var(--kz-text-secondary))]">
             Type an email or pick someone from the list, then click Apply.
           </p>
           <UserAutocomplete
@@ -109,7 +108,7 @@ export default function ActionItemAssigneePicker({
                 setDraft("");
                 setSelectedUser(null);
               }}
-              className="text-xs text-neutral-500 hover:text-red-600 underline"
+              className="text-xs underline text-[color:var(--text-muted,var(--kz-placeholder))] hover:text-[color:var(--danger-color,var(--kz-alert))]"
             >
               Clear assignee
             </button>

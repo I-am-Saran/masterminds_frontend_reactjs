@@ -116,6 +116,28 @@
   --kz-modal-bg: #ffffff;
   --kz-modal-header-bg: linear-gradient(90deg, rgba(44, 44, 44, 0.08) 0%, rgba(215, 255, 49, 0.08) 100%);
   --kz-shell-bg: #F8FAFC;
+  /* Generic theme aliases for shared component styling */
+  --surface-primary: var(--kz-surface);
+  --surface-secondary: var(--kz-surface-secondary);
+  --surface-hover: var(--kz-hover-bg);
+  --text-primary: var(--kz-text-primary);
+  --text-secondary: var(--kz-text-secondary);
+  --text-muted: var(--kz-placeholder);
+  --border-color: var(--kz-border);
+  --input-bg: var(--kz-input-bg);
+  --accent-color: var(--kz-accent-vibrant);
+  --danger-color: var(--kz-alert);
+  --table-header-bg: var(--kz-table-header-bg);
+  --table-row-bg: var(--kz-table-row-bg);
+  --table-row-hover-bg: var(--kz-table-row-hover-bg);
+  --button-secondary-bg: var(--kz-btn-secondary-bg);
+  --button-secondary-text: var(--kz-text-primary);
+  --button-secondary-border: var(--kz-border);
+  --button-disabled-bg: #e5e7eb;
+  --button-disabled-text: #94a3b8;
+  --scrollbar-track: var(--kz-bg);
+  --scrollbar-thumb: var(--kz-border-strong);
+  --scrollbar-thumb-hover: var(--kz-accent-vibrant);
 }
 
 [data-theme="dark"] {
@@ -254,6 +276,27 @@
   --kz-login-gradient-a: #0F172A;
   --kz-login-gradient-b: #111827;
   --kz-login-gradient-c: #1E293B;
+  --surface-primary: var(--kz-surface);
+  --surface-secondary: var(--kz-surface-secondary);
+  --surface-hover: var(--kz-hover-bg);
+  --text-primary: var(--kz-text-primary);
+  --text-secondary: var(--kz-text-secondary);
+  --text-muted: var(--kz-placeholder);
+  --border-color: var(--kz-border);
+  --input-bg: var(--kz-input-bg);
+  --accent-color: var(--kz-accent-vibrant);
+  --danger-color: var(--kz-alert);
+  --table-header-bg: var(--kz-table-header-bg);
+  --table-row-bg: var(--kz-table-row-bg);
+  --table-row-hover-bg: var(--kz-table-row-hover-bg);
+  --button-secondary-bg: var(--kz-btn-secondary-bg);
+  --button-secondary-text: var(--kz-text-primary);
+  --button-secondary-border: var(--kz-border);
+  --button-disabled-bg: #243041;
+  --button-disabled-text: #64748b;
+  --scrollbar-track: var(--kz-shell-bg);
+  --scrollbar-thumb: var(--kz-border-strong);
+  --scrollbar-thumb-hover: var(--kz-accent-vibrant);
 }
 
 [data-theme="green"] {
@@ -338,14 +381,22 @@ body {
 }
 
 [data-theme="dark"] .kz-btn-secondary {
-  color: #ffffff;
-  background: var(--kz-btn-secondary-bg);
-  border-color: var(--kz-border);
+  color: var(--button-secondary-text);
+  background: var(--button-secondary-bg);
+  border-color: var(--button-secondary-border);
 }
 
 [data-theme="dark"] .kz-btn-secondary:hover:not(:disabled) {
   background: var(--kz-surface-elevated);
   border-color: var(--kz-accent-vibrant);
+}
+
+.kz-btn-secondary:disabled,
+.kz-btn-primary:disabled,
+.enterprise-icon-btn:disabled {
+  background: var(--button-disabled-bg);
+  color: var(--button-disabled-text);
+  border-color: var(--button-secondary-border);
 }
 
 .enterprise-icon-btn:hover {

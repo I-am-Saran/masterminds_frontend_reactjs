@@ -660,7 +660,7 @@
 }
 
 .tdash-recent-feed .kz-ticket-list-item:hover {
-  background: #f8fafc;
+  background: var(--surface-hover, var(--kz-hover-bg));
 }
 
 .tdash-recent-feed .kz-ticket-list-item:last-child {

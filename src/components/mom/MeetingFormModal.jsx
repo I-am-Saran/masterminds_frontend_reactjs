@@ -19,7 +19,10 @@ const EMPTY = {
 };
 
 const LOCKED_INPUT_CLASS =
-  "w-full border rounded-lg px-3 py-2 text-sm bg-neutral-50 text-neutral-600 cursor-not-allowed";
+  "w-full border rounded-lg px-3 py-2 text-sm bg-[color:var(--surface-secondary,var(--kz-surface-secondary))] text-[color:var(--text-secondary,var(--kz-text-secondary))] border-[color:var(--border-color,var(--kz-border))] cursor-not-allowed";
+const INPUT_CLASS =
+  "w-full border rounded-lg px-3 py-2 text-sm bg-[color:var(--input-bg,var(--kz-input-bg))] text-[color:var(--text-primary,var(--kz-text-primary))] border-[color:var(--border-color,var(--kz-border))] focus:outline-none focus:ring-2 focus:ring-[color:var(--kz-focus-ring)]";
+const LABEL_CLASS = "block text-sm font-medium mb-1 text-[color:var(--text-secondary,var(--kz-text-secondary))]";
 
 export default function MeetingFormModal({ open, onClose, onSubmit, initial = null, saving = false }) {
   const { session } = useSession();
@@ -89,12 +92,12 @@ export default function MeetingFormModal({ open, onClose, onSubmit, initial = nu
     >
       <form onSubmit={handleSubmit} className="space-y-3">
         <div>
-          <label className="block text-sm font-medium mb-1">Title *</label>
+          <label className={LABEL_CLASS}>Title *</label>
           <input
             type="text"
             value={form.title}
             onChange={(e) => set("title", e.target.value)}
-            className={isEdit ? LOCKED_INPUT_CLASS : "w-full border rounded-lg px-3 py-2 text-sm"}
+            className={isEdit ? LOCKED_INPUT_CLASS : INPUT_CLASS}
             readOnly={isEdit}
             disabled={isEdit}
             required
@@ -102,7 +105,7 @@ export default function MeetingFormModal({ open, onClose, onSubmit, initial = nu
         </div>
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="block text-sm font-medium mb-1">Meeting type</label>
+            <label className={LABEL_CLASS}>Meeting type</label>
             <CustomSelect
               value={form.meeting_type}
               onChange={(e) => set("meeting_type", e.target.value)}
@@ -116,7 +119,7 @@ export default function MeetingFormModal({ open, onClose, onSubmit, initial = nu
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Status</label>
+            <label className={LABEL_CLASS}>Status</label>
             <CustomSelect
               value={form.status}
               onChange={(e) => set("status", e.target.value)}
@@ -129,35 +132,35 @@ export default function MeetingFormModal({ open, onClose, onSubmit, initial = nu
         </div>
         <div className="grid grid-cols-3 gap-3">
           <div>
-            <label className="block text-sm font-medium mb-1">Date *</label>
+            <label className={LABEL_CLASS}>Date *</label>
             <input
               type="date"
               value={form.meeting_date}
               onChange={(e) => set("meeting_date", e.target.value)}
-              className={isEdit ? LOCKED_INPUT_CLASS : "w-full border rounded-lg px-3 py-2 text-sm"}
+              className={isEdit ? LOCKED_INPUT_CLASS : INPUT_CLASS}
               readOnly={isEdit}
               disabled={isEdit}
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Start</label>
+            <label className={LABEL_CLASS}>Start</label>
             <input
               type="time"
               value={form.start_time}
               onChange={(e) => set("start_time", e.target.value)}
-              className={isEdit ? LOCKED_INPUT_CLASS : "w-full border rounded-lg px-3 py-2 text-sm"}
+              className={isEdit ? LOCKED_INPUT_CLASS : INPUT_CLASS}
               readOnly={isEdit}
               disabled={isEdit}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">End</label>
+            <label className={LABEL_CLASS}>End</label>
             <input
               type="time"
               value={form.end_time}
               onChange={(e) => set("end_time", e.target.value)}
-              className={isEdit ? LOCKED_INPUT_CLASS : "w-full border rounded-lg px-3 py-2 text-sm"}
+              className={isEdit ? LOCKED_INPUT_CLASS : INPUT_CLASS}
               readOnly={isEdit}
               disabled={isEdit}
             />
@@ -191,12 +194,12 @@ export default function MeetingFormModal({ open, onClose, onSubmit, initial = nu
           />
         </div>
         <div>
-          <label className="block text-sm font-medium mb-1">Notes</label>
+          <label className={LABEL_CLASS}>Notes</label>
           <textarea
             value={form.notes}
             onChange={(e) => set("notes", e.target.value)}
             rows={3}
-            className="w-full border rounded-lg px-3 py-2 text-sm resize-y"
+            className={`${INPUT_CLASS} resize-y`}
           />
         </div>
       </form>

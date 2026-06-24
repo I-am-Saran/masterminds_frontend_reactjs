@@ -146,7 +146,7 @@ export default function RoleForm() {
               />
             </div>
 
-            <label className="flex items-start gap-3 cursor-pointer rounded-lg border border-slate-200 bg-slate-50/80 px-3 py-3">
+            <label className="flex items-start gap-3 cursor-pointer rounded-lg border border-[color:var(--border-color,var(--kz-border))] bg-[color:var(--surface-secondary,var(--kz-surface-secondary))]/80 px-3 py-3">
               <input
                 type="checkbox"
                 name="is_active"
@@ -155,15 +155,15 @@ export default function RoleForm() {
                 className="mt-0.5 w-4 h-4 accent-[#2d5a8f]"
               />
               <span>
-                <span className="text-sm font-medium text-slate-800">Active role</span>
-                <span className="block text-xs text-slate-500 mt-0.5">
+                <span className="text-sm font-medium text-[color:var(--text-primary,var(--kz-text-primary))]">Active role</span>
+                <span className="block text-xs text-[color:var(--text-secondary,var(--kz-text-secondary))] mt-0.5">
                   Inactive roles cannot be assigned to users
                 </span>
               </span>
             </label>
           </div>
 
-          <div className="mt-6 flex flex-wrap justify-end gap-2 border-t border-slate-100 pt-4">
+          <div className="mt-6 flex flex-wrap justify-end gap-2 border-t border-[color:var(--border-color,var(--kz-border))] pt-4">
             <SecondaryButton type="button" onClick={() => navigate("/roles")}>
               Cancel
             </SecondaryButton>
@@ -174,7 +174,7 @@ export default function RoleForm() {
         </SectionCard>
 
         {!id && (
-          <p className="text-xs text-slate-500 mt-3 px-1">
+          <p className="text-xs text-[color:var(--text-secondary,var(--kz-text-secondary))] mt-3 px-1">
             After creating the role, you will be taken to the permissions screen to configure module access.
           </p>
         )}

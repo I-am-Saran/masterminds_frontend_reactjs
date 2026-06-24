@@ -145,9 +145,9 @@ table tbody tr:hover {
   border-radius: 8px;
   background: linear-gradient(
     90deg,
-    #E2E8F0 0%,
-    #F1F5F9 40%,
-    #E2E8F0 80%
+    color-mix(in srgb, var(--surface-secondary, var(--kz-surface-secondary)) 88%, var(--text-secondary, var(--kz-text-secondary)) 12%) 0%,
+    color-mix(in srgb, var(--surface-primary, var(--kz-surface)) 84%, var(--text-secondary, var(--kz-text-secondary)) 16%) 40%,
+    color-mix(in srgb, var(--surface-secondary, var(--kz-surface-secondary)) 88%, var(--text-secondary, var(--kz-text-secondary)) 12%) 80%
   );
   background-size: 200% 100%;
   animation: kz-shimmer 1.4s ease-in-out infinite;

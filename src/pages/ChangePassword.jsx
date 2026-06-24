@@ -4,6 +4,7 @@ import { Lock, Eye, EyeOff } from "lucide-react";
 import { useSession } from "../contexts/SessionContext";
 import { useToast } from "../contexts/ToastContext";
 import { post } from "../services/api.js";
+import Loader from "../components/Loader";
 
 export default function ChangePassword() {
   const { session, restored } = useSession();
@@ -115,16 +116,7 @@ export default function ChangePassword() {
 
   // Show loading state while checking session
   if (!restored) {
-    return (
-      <div className="d-flex align-items-center justify-content-center vh-100">
-        <div className="text-center">
-          <div className="spinner-border text-primary" role="status" style={{ width: '3rem', height: '3rem' }}>
-            <span className="visually-hidden">Loading...</span>
-          </div>
-          <p className="mt-3 text-muted">Loading...</p>
-        </div>
-      </div>
-    );
+    return <Loader message="Loading..." />;
   }
 
   return (

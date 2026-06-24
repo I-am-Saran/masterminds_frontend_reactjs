@@ -6,7 +6,7 @@ import { useSession } from "../../contexts/SessionContext";
 import Loader from "../../components/Loader";
 import PermissionGuard from "../../components/PermissionGuard";
 import EmptyState from "../../components/ui/EmptyState";
-import KaizenTaskFormModal from "../../components/kaizen-tasks/KaizenTaskFormModal";
+import KaizenTaskForm from "../../components/kaizen-tasks/KaizenTaskForm";
 import { KaizenPriorityChip, KaizenStatusChip, KaizenWorkflowStatusChip } from "../../components/kaizen-tasks/KaizenChips";
 import { KZ } from "../../constants/designTokens";
 import {
@@ -100,6 +100,42 @@ export default function KaizenTaskDetailPage() {
       showToast(err?.message || "Update failed", "error");
     }
   };
+
+  if (editOpen) {
+    return (
+      <div className="p-4 md:p-6 max-w-[1400px] mx-auto">
+        <button
+          type="button"
+          onClick={() => setEditOpen(false)}
+          className="inline-flex items-center gap-1 text-sm mb-4 hover:opacity-80"
+          style={{ color: KZ.textMuted }}
+        >
+          <ArrowLeft size={16} />
+          Back to Ticket
+        </button>
+
+        <div className="kz-ticket-editor-page">
+          <div className="kz-ticket-editor-page__header">
+            <p className="kz-ticket-editor-page__eyebrow">Edit Ticket</p>
+            <h1 className="kz-ticket-editor-page__title">{task.title}</h1>
+            <p className="kz-ticket-editor-page__subtitle">
+              Update core ticket details in a single page layout. Workflow progress remains on the detail view after you save.
+            </p>
+          </div>
+
+          <KaizenTaskForm
+            mode="edit"
+            variant="page"
+            initial={task}
+            history={history}
+            saving={updateMutation.isPending}
+            onSubmit={handleUpdate}
+            onCancel={() => setEditOpen(false)}
+          />
+        </div>
+      </div>
+    );
+  }
 
   const handleStartWork = async () => {
     try {
@@ -278,16 +314,6 @@ export default function KaizenTaskDetailPage() {
           </section>
         </div>
       </div>
-
-      <KaizenTaskFormModal
-        open={editOpen}
-        onClose={() => setEditOpen(false)}
-        onSubmit={handleUpdate}
-        saving={updateMutation.isPending}
-        initial={task}
-        history={history}
-        title="Edit Ticket"
-      />
     </div>
   );
 }

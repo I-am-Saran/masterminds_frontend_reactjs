@@ -205,7 +205,11 @@ body,
   min-width: 0;
   width: 100%;
   padding: 20px 24px;
-  background: linear-gradient(135deg, #ffffff 0%, rgba(215, 255, 49, 0.08) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--surface-primary, var(--kz-surface)) 0%,
+    color-mix(in srgb, var(--surface-primary, var(--kz-surface)) 92%, var(--accent-color, var(--kz-accent-vibrant)) 8%) 100%
+  );
 }
 
 .kz-greeting-card__title {

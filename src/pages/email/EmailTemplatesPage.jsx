@@ -40,10 +40,13 @@ function StatusBadge({ active }) {
       className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold ${
         active
           ? "border-emerald-200 bg-emerald-50 text-emerald-800"
-          : "border-slate-200 bg-slate-50 text-slate-600"
+          : "border-[color:var(--border-color,var(--kz-border))] bg-[color:var(--surface-secondary,var(--kz-surface-secondary))] text-[color:var(--text-secondary,var(--kz-text-secondary))]"
       }`}
     >
-      <span className={`h-1.5 w-1.5 rounded-full ${active ? "bg-emerald-500" : "bg-slate-400"}`} />
+      <span
+        className="h-1.5 w-1.5 rounded-full"
+        style={{ background: active ? "#10b981" : "var(--text-muted, var(--kz-placeholder))" }}
+      />
       {active ? "Active" : "Inactive"}
     </span>
   );
@@ -58,18 +61,18 @@ function VariablesPanel({ variables, onInsert }) {
     { key: "branding", title: "Branding (Inline)" },
   ];
   return (
-    <div className="rounded-xl border border-slate-200 bg-slate-50 p-3 space-y-3">
-      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Available Variables</p>
+    <div className="rounded-xl border border-[color:var(--border-color,var(--kz-border))] bg-[color:var(--surface-secondary,var(--kz-surface-secondary))] p-3 space-y-3">
+      <p className="text-xs font-semibold uppercase tracking-wide text-[color:var(--text-secondary,var(--kz-text-secondary))]">Available Variables</p>
       {sections.map(({ key, title }) => (
         <div key={key}>
-          <p className="text-sm font-medium text-slate-700 mb-1.5">{title}</p>
+          <p className="text-sm font-medium text-[color:var(--text-primary,var(--kz-text-primary))] mb-1.5">{title}</p>
           <div className="flex flex-wrap gap-1.5">
             {(variables[key] || []).map((v) => (
               <button
                 key={v}
                 type="button"
                 onClick={() => onInsert(v)}
-                className="rounded-md border border-slate-200 bg-white px-2 py-1 text-xs font-mono text-indigo-700 hover:bg-indigo-50"
+                className="rounded-md border border-[color:var(--border-color,var(--kz-border))] bg-[color:var(--surface-primary,var(--kz-surface))] px-2 py-1 text-xs font-mono text-[color:var(--accent-color,var(--kz-accent-vibrant))] hover:bg-[color:var(--surface-hover,var(--kz-hover-bg))]"
               >
                 {v}
               </button>
@@ -246,12 +249,12 @@ export default function EmailTemplatesPage() {
       grow: 2,
       cell: (row) => (
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-violet-100 to-purple-100 flex items-center justify-center text-violet-700">
+          <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: "var(--surface-secondary, var(--kz-surface-secondary))", color: "var(--accent-color, var(--kz-accent-vibrant))" }}>
             <FileText size={16} />
           </div>
           <div>
-            <div className="font-medium text-gray-900">{row.template_name}</div>
-            <div className="text-xs text-gray-500 truncate max-w-xs">{row.subject}</div>
+            <div className="font-medium text-[color:var(--text-primary,var(--kz-text-primary))]">{row.template_name}</div>
+            <div className="text-xs text-[color:var(--text-secondary,var(--kz-text-secondary))] truncate max-w-xs">{row.subject}</div>
           </div>
         </div>
       ),
@@ -336,19 +339,19 @@ export default function EmailTemplatesPage() {
               placeholder="Select event"
             />
             <div>
-              <label className="text-sm text-gray-700 mb-1 block">Subject</label>
+              <label className="text-sm text-[color:var(--text-secondary,var(--kz-text-secondary))] mb-1 block">Subject</label>
               <input
                 ref={subjectRef}
                 type="text"
                 value={form.subject}
                 onFocus={() => setActiveField("subject")}
                 onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                className="w-full rounded-xl bg-white border border-neutral-300 px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-accent/40"
+                className="w-full rounded-xl bg-[color:var(--input-bg,var(--kz-input-bg))] border border-[color:var(--border-color,var(--kz-border))] px-3 py-2 text-[color:var(--text-primary,var(--kz-text-primary))] focus:outline-none focus:ring-2 focus:ring-[color:var(--kz-focus-ring)]"
               />
             </div>
             <div>
               <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
-                <label className="text-sm text-gray-700 block">HTML Email Body</label>
+                <label className="text-sm text-[color:var(--text-secondary,var(--kz-text-secondary))] block">HTML Email Body</label>
                 <SecondaryButton onClick={loadDefaultHtmlTemplate}>
                   Load Default HTML Template
                 </SecondaryButton>
@@ -360,31 +363,31 @@ export default function EmailTemplatesPage() {
                 onChange={(e) => setForm({ ...form, body: e.target.value })}
                 rows={14}
                 placeholder="Paste responsive HTML with inline CSS. Use {{variables}} for dynamic content."
-                className="w-full rounded-xl bg-white border border-neutral-300 px-3 py-2 text-gray-800 font-mono text-xs focus:outline-none focus:ring-2 focus:ring-accent/40"
+                className="w-full rounded-xl bg-[color:var(--input-bg,var(--kz-input-bg))] border border-[color:var(--border-color,var(--kz-border))] px-3 py-2 text-[color:var(--text-primary,var(--kz-text-primary))] font-mono text-xs focus:outline-none focus:ring-2 focus:ring-[color:var(--kz-focus-ring)]"
               />
-              <p className="mt-1.5 text-xs text-slate-500">
+              <p className="mt-1.5 text-xs text-[color:var(--text-secondary,var(--kz-text-secondary))]">
                 Emails are sent as HTML when the body contains HTML markup. Use table-based layout and inline CSS for Outlook and Gmail compatibility.
               </p>
             </div>
-            <label className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+            <label className="flex items-center gap-2 text-sm text-[color:var(--text-secondary,var(--kz-text-secondary))] cursor-pointer">
               <input
                 type="checkbox"
                 checked={form.is_active}
                 onChange={(e) => setForm({ ...form, is_active: e.target.checked })}
-                className="rounded border-gray-300"
+                className="rounded border-[color:var(--border-color,var(--kz-border))]"
               />
               Active
             </label>
           </div>
           <div className="lg:col-span-2">
             <VariablesPanel variables={variables} onInsert={insertVariable} />
-            <p className="mt-2 text-xs text-slate-500">
+            <p className="mt-2 text-xs text-[color:var(--text-secondary,var(--kz-text-secondary))]">
               Click a variable to insert at the cursor in the focused field (Subject or Body).
-              Logo: use <code className="text-indigo-700">cid:masterminds_logo</code> in {"<img src>"} — embedded automatically when sending HTML email.
+              Logo: use <code className="text-[color:var(--accent-color,var(--kz-accent-vibrant))]">cid:masterminds_logo</code> in {"<img src>"} — embedded automatically when sending HTML email.
             </p>
           </div>
         </div>
-        <div className="flex justify-end gap-3 mt-4 pt-2 border-t border-slate-100">
+        <div className="flex justify-end gap-3 mt-4 pt-2 border-t border-[color:var(--border-color,var(--kz-border))]">
           <SecondaryButton onClick={() => setModalOpen(false)}>Cancel</SecondaryButton>
           <PrimaryButton onClick={handleSave} disabled={saving}>
             {saving ? "Saving..." : "Save"}

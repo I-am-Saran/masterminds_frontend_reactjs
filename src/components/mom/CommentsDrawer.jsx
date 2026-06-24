@@ -3,7 +3,6 @@ import { createPortal } from "react-dom";
 import { X, Send } from "lucide-react";
 import { listComments, createComment } from "../../services/momApi";
 import { useToast } from "../../contexts/ToastContext";
-import { THEME_COLORS } from "../../constants/colors";
 import Loader from "../Loader";
 
 const DRAWER_Z_BACKDROP = 1300;
@@ -18,6 +17,13 @@ export default function CommentsDrawer({ actionItem, open, onClose, onCommentAdd
   const [visible, setVisible] = useState(false);
   const listRef = useRef(null);
   const inputRef = useRef(null);
+  const surfacePrimary = "var(--surface-primary, var(--kz-surface))";
+  const surfaceSecondary = "var(--surface-secondary, var(--kz-surface-secondary))";
+  const textPrimary = "var(--text-primary, var(--kz-text-primary))";
+  const textSecondary = "var(--text-secondary, var(--kz-text-secondary))";
+  const textMuted = "var(--text-muted, var(--kz-placeholder))";
+  const borderColor = "var(--border-color, var(--kz-border))";
+  const accentColor = "var(--accent-color, var(--kz-accent-vibrant))";
 
   useEffect(() => {
     if (!open) {
@@ -110,10 +116,11 @@ export default function CommentsDrawer({ actionItem, open, onClose, onCommentAdd
         aria-hidden="true"
       />
       <aside
-        className="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col transition-transform duration-300 ease-out"
+        className="fixed top-0 right-0 h-full w-full max-w-md shadow-2xl flex flex-col transition-transform duration-300 ease-out"
         style={{
           zIndex: DRAWER_Z_PANEL,
-          borderLeft: `1px solid ${THEME_COLORS.deepBlue}15`,
+          background: surfacePrimary,
+          borderLeft: `1px solid ${borderColor}`,
           transform: visible ? "translateX(0)" : "translateX(100%)",
         }}
         role="dialog"
@@ -124,13 +131,16 @@ export default function CommentsDrawer({ actionItem, open, onClose, onCommentAdd
       >
         <div
           className="flex items-center justify-between px-4 py-3 border-b shrink-0"
-          style={{ background: `linear-gradient(135deg, ${THEME_COLORS.deepBlue}08, ${THEME_COLORS.mediumTeal}08)` }}
+          style={{
+            background: "var(--kz-modal-header-bg)",
+            borderColor,
+          }}
         >
           <div className="min-w-0">
-            <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: THEME_COLORS.mediumTeal }}>
+            <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: accentColor }}>
               Comments
             </p>
-            <p className="text-sm font-medium truncate" style={{ color: THEME_COLORS.deepBlue }}>
+            <p className="text-sm font-medium truncate" style={{ color: textPrimary }}>
               {actionItem?.title || "Action item"}
             </p>
           </div>
@@ -140,10 +150,11 @@ export default function CommentsDrawer({ actionItem, open, onClose, onCommentAdd
               e.stopPropagation();
               onClose();
             }}
-            className="p-1.5 rounded-lg hover:bg-neutral-100 transition-colors"
+            className="p-1.5 rounded-lg transition-colors"
+            style={{ color: textSecondary }}
             aria-label="Close comments"
           >
-            <X size={18} style={{ color: THEME_COLORS.copper }} />
+            <X size={18} />
           </button>
         </div>
 
@@ -151,19 +162,23 @@ export default function CommentsDrawer({ actionItem, open, onClose, onCommentAdd
           {loading ? (
             <Loader message="Loading comments..." fullScreen={false} />
           ) : comments.length === 0 ? (
-            <p className="text-sm text-neutral-500 text-center py-8">No comments yet</p>
+            <p className="text-sm text-center py-8" style={{ color: textSecondary }}>No comments yet</p>
           ) : (
             comments.map((c) => (
-              <div key={c.id} className="rounded-lg px-3 py-2" style={{ background: "#f8fafc" }}>
+              <div
+                key={c.id}
+                className="rounded-lg px-3 py-2"
+                style={{ background: surfaceSecondary, border: `1px solid ${borderColor}` }}
+              >
                 <div className="flex items-baseline justify-between gap-2 mb-1">
-                  <span className="text-xs font-semibold" style={{ color: THEME_COLORS.deepBlue }}>
+                  <span className="text-xs font-semibold" style={{ color: textPrimary }}>
                     {c.commented_by_name || "User"}
                   </span>
-                  <span className="text-[10px] text-neutral-400 shrink-0">
+                  <span className="text-[10px] shrink-0" style={{ color: textMuted }}>
                     {c.created_at ? new Date(c.created_at).toLocaleString() : ""}
                   </span>
                 </div>
-                <p className="text-sm text-neutral-700 whitespace-pre-wrap">{c.comment}</p>
+                <p className="text-sm whitespace-pre-wrap" style={{ color: textSecondary }}>{c.comment}</p>
               </div>
             ))
           )}
@@ -171,7 +186,8 @@ export default function CommentsDrawer({ actionItem, open, onClose, onCommentAdd
 
         <form
           onSubmit={handleSubmit}
-          className="border-t p-3 flex gap-2 shrink-0 bg-white"
+          className="border-t p-3 flex gap-2 shrink-0"
+          style={{ background: surfacePrimary, borderColor }}
           onClick={(e) => e.stopPropagation()}
         >
           <input
@@ -180,8 +196,13 @@ export default function CommentsDrawer({ actionItem, open, onClose, onCommentAdd
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Add a comment..."
-            className="flex-1 text-sm border rounded-lg px-3 py-2 bg-white text-neutral-900 focus:outline-none focus:ring-2 focus:ring-[#5a9ba8]/40"
-            style={{ borderColor: `${THEME_COLORS.mediumTeal}60` }}
+            className="flex-1 text-sm border rounded-lg px-3 py-2 focus:outline-none focus:ring-2"
+            style={{
+              background: "var(--input-bg, var(--kz-input-bg))",
+              color: textPrimary,
+              borderColor,
+              boxShadow: "none",
+            }}
             disabled={submitting}
           />
           <button

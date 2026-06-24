@@ -113,11 +113,11 @@ function UserDetailsModalBody({ viewUser, formatUserId }) {
             {initial}
           </span>
           <div className="min-w-0">
-            <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 mb-1">
+            <p className="text-[11px] font-semibold uppercase tracking-wide text-[color:var(--text-secondary,var(--kz-text-secondary))] mb-1">
               User account
             </p>
-            <h3 className="text-lg font-semibold text-slate-900 truncate">{displayName}</h3>
-            <p className="text-sm text-slate-600 truncate">{viewUser.email || "—"}</p>
+            <h3 className="text-lg font-semibold text-[color:var(--text-primary,var(--kz-text-primary))] truncate">{displayName}</h3>
+            <p className="text-sm text-[color:var(--text-secondary,var(--kz-text-secondary))] truncate">{viewUser.email || "—"}</p>
           </div>
         </div>
         <div className="flex flex-col items-end gap-2 shrink-0">
@@ -192,7 +192,7 @@ function UserDetailsModalBody({ viewUser, formatUserId }) {
                   href={profileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bug-detail-meta-value text-[#2d5a8f] hover:underline break-all"
+                  className="bug-detail-meta-value text-[color:var(--accent-color,var(--kz-accent-vibrant))] hover:underline break-all"
                 >
                   {profileUrl}
                 </a>
@@ -788,10 +788,10 @@ export default function UsersPage() {
       >
         <form id="change-user-password-form" className="space-y-4" onSubmit={handleSubmit}>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">User</label>
-            <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
-              <div className="font-semibold text-gray-900">{user?.name || user?.full_name || "—"}</div>
-              <div className="text-sm text-gray-600">{user?.email || "—"}</div>
+            <label className="block text-sm font-medium text-[color:var(--text-secondary,var(--kz-text-secondary))] mb-2">User</label>
+            <div className="p-3 rounded-lg border bg-[color:var(--surface-secondary,var(--kz-surface-secondary))] border-[color:var(--border-color,var(--kz-border))]">
+              <div className="font-semibold text-[color:var(--text-primary,var(--kz-text-primary))]">{user?.name || user?.full_name || "—"}</div>
+              <div className="text-sm text-[color:var(--text-secondary,var(--kz-text-secondary))]">{user?.email || "—"}</div>
             </div>
           </div>
           <FormField
@@ -1223,7 +1223,7 @@ export default function UsersPage() {
                 />
               </div>
             </div>
-            <div className="mt-4 flex flex-wrap gap-2 border-t border-slate-100 pt-4">
+            <div className="mt-4 flex flex-wrap gap-2 border-t border-[color:var(--border-color,var(--kz-border))] pt-4">
               <PrimaryButton type="submit" disabled={submitting}>
                 {submitting ? "Creating…" : "Create user"}
               </PrimaryButton>
@@ -1250,7 +1250,7 @@ export default function UsersPage() {
             <FormField label="Name" value={inviteName} onChange={(e) => setInviteName(e.target.value)} />
             <FormField label="Role" type="select" value={inviteRole} onChange={(v) => setInviteRole(v)} options={fetchedRoles} />
             <FormField label="Email" value={inviteEmail} onChange={(e) => setInviteEmail(e.target.value)} />
-            <div className="flex flex-wrap gap-2 border-t border-slate-100 pt-4">
+            <div className="flex flex-wrap gap-2 border-t border-[color:var(--border-color,var(--kz-border))] pt-4">
               <PrimaryButton type="submit">Send invite</PrimaryButton>
               <SecondaryButton type="button" onClick={() => setView("list")}>
                 Cancel

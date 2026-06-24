@@ -215,7 +215,7 @@ export default function KaizenTasksPage() {
 
       <KaizenFiltersBar>
         <div className="relative flex-1 min-w-[200px] max-w-md">
-          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400" />
+          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[color:var(--text-muted,var(--kz-placeholder))]" />
           <input
             id="kz-ticket-search"
             className="w-full pl-9 pr-3"

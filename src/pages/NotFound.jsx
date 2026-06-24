@@ -7,7 +7,7 @@ const NotFound = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 sm:px-6 lg:px-8 overflow-hidden relative">
+    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden relative bg-[color:var(--surface-primary,var(--kz-bg))]">
       {/* Abstract Background Shapes */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div 
@@ -24,7 +24,7 @@ const NotFound = () => {
         ></div>
       </div>
 
-      <div className="max-w-lg w-full space-y-8 text-center relative z-10 bg-white p-10 rounded-2xl shadow-xl border border-gray-100">
+      <div className="max-w-lg w-full space-y-8 text-center relative z-10 p-10 rounded-2xl shadow-xl border bg-[color:var(--surface-primary,var(--kz-surface))] border-[color:var(--border-color,var(--kz-border))]">
         <div className="flex flex-col items-center justify-center">
           <div 
             className="w-20 h-20 rounded-2xl flex items-center justify-center mb-6 shadow-md transform -rotate-6"
@@ -32,7 +32,7 @@ const NotFound = () => {
               background: `linear-gradient(135deg, ${THEME_COLORS.deepBlue}, ${THEME_COLORS.deepBlueDark})` 
             }}
           >
-            <FileQuestion size={40} className="text-white" strokeWidth={2} />
+            <FileQuestion size={40} className="text-[color:var(--kz-text-inverse)]" strokeWidth={2} />
           </div>
           
           <h1 
@@ -46,12 +46,12 @@ const NotFound = () => {
           </h1>
           
           <h2 
-            className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl mb-3"
+            className="text-2xl font-bold tracking-tight text-[color:var(--text-primary,var(--kz-text-primary))] sm:text-3xl mb-3"
           >
             Page Not Found
           </h2>
           
-          <p className="text-base text-gray-500 max-w-sm mx-auto mb-8">
+          <p className="text-base text-[color:var(--text-secondary,var(--kz-text-secondary))] max-w-sm mx-auto mb-8">
             The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
           </p>
 
@@ -77,7 +77,7 @@ const NotFound = () => {
         </div>
       </div>
       
-      <div className="absolute bottom-6 text-xs text-gray-400 font-medium tracking-wide">
+      <div className="absolute bottom-6 text-xs text-[color:var(--text-muted,var(--kz-placeholder))] font-medium tracking-wide">
         KAIZEN PLATFORM
       </div>
     </div>

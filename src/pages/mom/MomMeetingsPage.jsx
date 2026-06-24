@@ -23,8 +23,8 @@ const tableStyles = {
       fontWeight: 700,
       textTransform: "uppercase",
       letterSpacing: "0.04em",
-      color: "#64748b",
-      backgroundColor: "#f8fafc",
+      color: "var(--text-secondary, var(--kz-text-secondary))",
+      backgroundColor: "var(--table-header-bg, var(--kz-table-header-bg))",
       position: "sticky",
       top: 0,
     },
@@ -39,7 +39,9 @@ const tableStyles = {
       minHeight: "44px",
       fontSize: "13px",
       cursor: "pointer",
-      "&:hover": { backgroundColor: "rgba(45, 90, 143, 0.04)" },
+      backgroundColor: "var(--table-row-bg, var(--kz-table-row-bg))",
+      color: "var(--text-primary, var(--kz-text-primary))",
+      "&:hover": { backgroundColor: "var(--table-row-hover-bg, var(--kz-table-row-hover-bg))" },
     },
   },
 };
@@ -116,7 +118,7 @@ export default function MomMeetingsPage() {
         sortable: true,
         grow: 2,
         cell: (r) => (
-          <span className="font-medium" style={{ color: THEME_COLORS.deepBlue }}>
+          <span className="font-medium" style={{ color: "var(--text-primary, var(--kz-text-primary))" }}>
             {r.title}
           </span>
         ),
@@ -177,8 +179,8 @@ export default function MomMeetingsPage() {
               e.stopPropagation();
               openMeetingView(r.id);
             }}
-            className="p-1.5 rounded-lg hover:bg-neutral-100 transition-colors"
-            style={{ color: THEME_COLORS.mediumTeal }}
+            className="p-1.5 rounded-lg transition-colors hover:bg-[color:var(--surface-hover,var(--kz-hover-bg))]"
+            style={{ color: "var(--accent-color, var(--kz-accent-vibrant))" }}
           >
             <Eye size={16} />
           </button>
@@ -192,13 +194,13 @@ export default function MomMeetingsPage() {
     <div>
       <div className="flex flex-wrap items-center gap-3 mb-4">
         <div className="relative flex-1 min-w-[200px] max-w-sm">
-          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400" />
+          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[color:var(--text-muted,var(--kz-placeholder))]" />
           <input
             type="text"
             value={search}
             onChange={(e) => { setSearch(e.target.value); setPage(1); }}
             placeholder="Search meetings..."
-            className="w-full pl-9 pr-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/30"
+            className="w-full pl-9 pr-3 py-2 text-sm border rounded-lg bg-[color:var(--input-bg,var(--kz-input-bg))] text-[color:var(--text-primary,var(--kz-text-primary))] border-[color:var(--border-color,var(--kz-border))] focus:outline-none focus:ring-2 focus:ring-[color:var(--kz-focus-ring)]"
           />
         </div>
         <FilterSelect
@@ -218,7 +220,7 @@ export default function MomMeetingsPage() {
         )}
       </div>
 
-      <div className="rounded-xl border border-neutral-200 overflow-hidden bg-white">
+      <div className="rounded-xl border overflow-hidden bg-[color:var(--surface-primary,var(--kz-surface))] border-[color:var(--border-color,var(--kz-border))]">
         <DataTable
           columns={columns}
           data={meetings}
@@ -238,7 +240,7 @@ export default function MomMeetingsPage() {
           responsive={false}
           customStyles={tableStyles}
           noDataComponent={
-            <p className="py-8 text-sm text-neutral-400">No meetings found</p>
+            <p className="py-8 text-sm text-[color:var(--text-muted,var(--kz-placeholder))]">No meetings found</p>
           }
         />
       </div>

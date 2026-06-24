@@ -318,7 +318,7 @@ export default function RoleDetails() {
                           title={`Select all: ${action.label}`}
                         />
                         <span className="inline-flex items-center gap-1">
-                          <IconComponent size={13} className="text-slate-500" />
+                          <IconComponent size={13} className="text-[color:var(--text-secondary,var(--kz-text-secondary))]" />
                           {action.label}
                         </span>
                       </div>
@@ -337,7 +337,7 @@ export default function RoleDetails() {
                 );
                 return (
                   <tr key={module.module_name}>
-                    <td className="text-slate-500 text-xs tabular-nums">{index + 1}</td>
+                    <td className="text-[color:var(--text-secondary,var(--kz-text-secondary))] text-xs tabular-nums">{index + 1}</td>
                     <td>
                       <div className="flex items-start gap-2">
                         <input
@@ -348,11 +348,11 @@ export default function RoleDetails() {
                           className="mt-1"
                         />
                         <div className="min-w-0">
-                          <span className="text-sm font-medium text-slate-800 block">
+                          <span className="text-sm font-medium text-[color:var(--text-primary,var(--kz-text-primary))] block">
                             {module.display_name}
                           </span>
                           {module.description ? (
-                            <span className="text-xs text-slate-500 block mt-0.5">
+                            <span className="text-xs text-[color:var(--text-secondary,var(--kz-text-secondary))] block mt-0.5">
                               {module.description}
                             </span>
                           ) : null}
@@ -374,7 +374,7 @@ export default function RoleDetails() {
                             }
                           />
                         ) : (
-                          <span className="text-slate-300">—</span>
+                          <span className="text-[color:var(--text-muted,var(--kz-placeholder))]">—</span>
                         )}
                       </td>
                     ))}

@@ -172,7 +172,7 @@ export default function RolesList() {
         const type = r.is_system_role ? "System" : "Custom";
         return (
           <span className={`px-2 py-1 text-xs rounded-full whitespace-nowrap ${
-            r.is_system_role ? 'bg-purple-100 text-purple-800' : 'bg-gray-100 text-gray-800'
+            r.is_system_role ? 'bg-purple-100 text-purple-800' : 'bg-[color:var(--surface-secondary,var(--kz-surface-secondary))] text-[color:var(--text-primary,var(--kz-text-primary))] border border-[color:var(--border-color,var(--kz-border))]'
           }`}>
             {type}
           </span>
@@ -194,7 +194,7 @@ export default function RolesList() {
           Inactive: "text-red-600",
         };
         return (
-          <span className={`font-semibold whitespace-nowrap ${statusColors[status] || "text-gray-700"}`}>
+          <span className={`font-semibold whitespace-nowrap ${statusColors[status] || "text-[color:var(--text-primary,var(--kz-text-primary))]"}`}>
             {status}
           </span>
         );
@@ -359,7 +359,7 @@ export default function RolesList() {
                     className={`inline-flex rounded-full border px-2 py-0.5 text-[10px] font-semibold ${
                       viewRole.is_system_role
                         ? "bg-violet-50 text-violet-800 border-violet-200"
-                        : "bg-slate-100 text-slate-700 border-slate-200"
+                        : "bg-[color:var(--surface-secondary,var(--kz-surface-secondary))] text-[color:var(--text-primary,var(--kz-text-primary))] border-[color:var(--border-color,var(--kz-border))]"
                     }`}
                   >
                     {viewRole.is_system_role ? "System" : "Custom"}

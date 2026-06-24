@@ -137,7 +137,7 @@ export function ActionIconButton({ onClick, title, children, variant = "view" })
   const styles = {
     view: "text-primary hover:bg-[color:var(--kz-active-bg)]",
     edit: "text-[color:var(--kz-primary-light)] hover:bg-[color:var(--kz-hover-bg)]",
-    delete: "text-red-600 hover:bg-red-50",
+    delete: "text-[color:var(--danger-color,var(--kz-alert))] hover:bg-[color:var(--surface-hover,var(--kz-hover-bg))]",
   };
   return (
     <button
@@ -257,20 +257,20 @@ export function SectionCard({ title, subtitle, children, className = "" }) {
 const STATUS_STYLES = {
   completed: { bg: "bg-emerald-50", text: "text-emerald-700", border: "border-emerald-200" },
   done: { bg: "bg-emerald-50", text: "text-emerald-700", border: "border-emerald-200" },
-  closed: { bg: "bg-slate-100", text: "text-slate-700", border: "border-slate-200" },
+  closed: { bg: "bg-[color:var(--surface-secondary,var(--kz-surface-secondary))]", text: "text-[color:var(--text-primary,var(--kz-text-primary))]", border: "border-[color:var(--border-color,var(--kz-border))]" },
   "in progress": { bg: "bg-sky-50", text: "text-sky-700", border: "border-sky-200" },
   open: { bg: "bg-amber-50", text: "text-amber-800", border: "border-amber-200" },
   pending: { bg: "bg-amber-50", text: "text-amber-800", border: "border-amber-200" },
   overdue: { bg: "bg-red-50", text: "text-red-700", border: "border-red-200" },
   blocked: { bg: "bg-red-50", text: "text-red-700", border: "border-red-200" },
   active: { bg: "bg-emerald-50", text: "text-emerald-700", border: "border-emerald-200" },
-  draft: { bg: "bg-slate-100", text: "text-slate-600", border: "border-slate-200" },
-  inactive: { bg: "bg-slate-100", text: "text-slate-500", border: "border-slate-200" },
+  draft: { bg: "bg-[color:var(--surface-secondary,var(--kz-surface-secondary))]", text: "text-[color:var(--text-secondary,var(--kz-text-secondary))]", border: "border-[color:var(--border-color,var(--kz-border))]" },
+  inactive: { bg: "bg-[color:var(--surface-secondary,var(--kz-surface-secondary))]", text: "text-[color:var(--text-secondary,var(--kz-text-secondary))]", border: "border-[color:var(--border-color,var(--kz-border))]" },
 };
 
 export function StatusChip({ status }) {
   if (!status || status === "—") {
-    return <span className="text-slate-300 text-xs">—</span>;
+    return <span className="text-[color:var(--text-muted,var(--kz-placeholder))] text-xs">—</span>;
   }
   const key = String(status).toLowerCase();
   const style =
@@ -296,12 +296,12 @@ const PRIORITY_STYLES = {
   blocker: { bg: "bg-red-50", text: "text-red-700", border: "border-red-200" },
   high: { bg: "bg-orange-50", text: "text-orange-800", border: "border-orange-200" },
   medium: { bg: "bg-amber-50", text: "text-amber-800", border: "border-amber-200" },
-  low: { bg: "bg-slate-100", text: "text-slate-600", border: "border-slate-200" },
+  low: { bg: "bg-[color:var(--surface-secondary,var(--kz-surface-secondary))]", text: "text-[color:var(--text-secondary,var(--kz-text-secondary))]", border: "border-[color:var(--border-color,var(--kz-border))]" },
 };
 
 export function PriorityChip({ priority }) {
   if (!priority || priority === "—") {
-    return <span className="text-slate-300 text-xs">—</span>;
+    return <span className="text-[color:var(--text-muted,var(--kz-placeholder))] text-xs">—</span>;
   }
   const key = String(priority).toLowerCase();
   const style = PRIORITY_STYLES[key] || {
@@ -406,7 +406,7 @@ export const TasksTableSkeleton = TableSkeleton;
 export const adminLabelClass =
   "text-[11px] font-semibold uppercase tracking-wide text-[color:var(--kz-text-secondary)] mb-1.5 block";
 export const adminInputClass =
-  "w-full h-9 px-3 text-sm border border-[color:var(--kz-border)] rounded-lg bg-card text-[color:var(--kz-text-primary)] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 disabled:bg-slate-50 disabled:text-slate-500";
+  "w-full h-9 px-3 text-sm border border-[color:var(--kz-border)] rounded-lg bg-card text-[color:var(--kz-text-primary)] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 disabled:bg-[color:var(--surface-secondary,var(--kz-surface-secondary))] disabled:text-[color:var(--text-secondary,var(--kz-text-secondary))]";
 export const adminSelectClass = `${adminInputClass} appearance-none pr-9`;
 export const adminTextareaClass =
   "w-full min-h-[100px] px-3 py-2.5 text-sm border border-[color:var(--kz-border)] rounded-lg bg-card text-[color:var(--kz-text-primary)] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40";
